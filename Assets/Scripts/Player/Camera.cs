@@ -11,6 +11,14 @@ public class Camera : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.GetCanFollow())
+        {
+            FollowPlayer();
+        }
+    }
+
+    private void FollowPlayer()
+    {
         var transform1 = transform.position;
         transform1.y = player.transform.position.y + 2.0f;
 

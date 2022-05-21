@@ -13,9 +13,25 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter()
+    private void OnCollisionEnter(Collision collision)
     {
+        if (collision.contacts[0].normal == Vector3.up)
+        {
+            GameManager.instance.SetCanFollow(false);
+        }
+
         Jump();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GameManager.instance.SetCanRotateCylinder(false);
+        GameManager.instance.SetCanFollow(true);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        GameManager.instance.SetCanRotateCylinder(true);
     }
 
     private void Jump()

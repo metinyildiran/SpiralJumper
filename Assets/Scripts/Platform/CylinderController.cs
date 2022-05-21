@@ -8,8 +8,11 @@ public class CylinderController : MonoBehaviour
 
     void FixedUpdate()
     {
-        KeyboardControl();
-        TouchControl();
+        if (GameManager.instance.GetCanRotateCylinder())
+        {
+            KeyboardControl();
+            TouchControl();
+        }
     }
 
     private void KeyboardControl()
