@@ -10,14 +10,16 @@ public class Circle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.Print();
         boxCollider.enabled = false;
 
-        Invoke(nameof(Destroy), 0.5f);
+        Destroy();
     }
 
     private void Destroy()
     {
-        Destroy(gameObject);
+        foreach(GameObject o in gameObject.GetChildren())
+        {
+            Destroy(o);
+        }
     }
 }
