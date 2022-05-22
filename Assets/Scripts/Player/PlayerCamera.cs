@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class PlayerCamera : MonoBehaviour
 {
     private GameObject player;
 
@@ -20,7 +20,7 @@ public class Camera : MonoBehaviour
     private void FollowPlayer()
     {
         var transform1 = transform.position;
-        transform1.y = player.transform.position.y + 2.0f;
+        transform1.y = player.transform.position.y + 3.0f;
 
         transform.position = transform1;
     }

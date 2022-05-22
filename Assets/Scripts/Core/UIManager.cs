@@ -12,7 +12,10 @@ public class UIManager : MonoBehaviour
         uiCanvas = GameObject.Find("UI");
         inGameUI = uiCanvas.GetChild("InGameUI");
         endGameUI = uiCanvas.GetChild("EndGameUI");
+    }
 
+    private void Start()
+    {
         GameManager.instance.onGameStart += HideInGameUI;
         GameManager.instance.onGameStop += ShowEndGameUI;
     }
