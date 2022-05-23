@@ -2,12 +2,13 @@
 
 public static class Utils
 {
-    public static object Print(this object anObject)
+
+    public static T Print<T>(this T anObject) where T : notnull
     {
         if (anObject == null)
         {
             Debug.Log("Null");
-            return null;
+            return default;
         }
 
         Debug.Log($"{anObject}");
@@ -15,12 +16,12 @@ public static class Utils
         return anObject;
     }
 
-    public static object Print(this object anObject, string message = "")
+    public static T Print<T>(this T anObject, string message = "") where T : notnull
     {
         if (anObject == null)
         {
             Debug.Log("Null");
-            return null;
+            return default;
         }
 
         Debug.Log($"{message}: {anObject}");
