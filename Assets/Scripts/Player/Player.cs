@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     private float jumpForce = 400.0f;
     private bool isJumping;
+    private bool isCollided;
 
     private void Awake()
     {
@@ -30,6 +31,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (isCollided) return;
+
+        isCollided = true;
+
         if (collision.contacts[0].normal == Vector3.up)
         {
             GameManager.instance.SetCanFollow(false);
@@ -47,6 +52,8 @@ public class Player : MonoBehaviour
         {
             Jump();
         }
+
+        Invoke(nameof(SetIsCollidedFalse), 0.2f);
     }
 
     private void SpawnSplashObject(Collision collision)
@@ -56,9 +63,11 @@ public class Player : MonoBehaviour
         SpawnSplashParticle();
 
         GameObject splash = SplashPooler.SharedInstance.GetPooledObject();
-        splash.transform.position = transform.position + new Vector3(0, 0.04f);
+
+        splash.transform.position = transform.position + new Vector3(0, 0.05f);
         splash.transform.DORotate(new Vector3(0, Random.Range(0, 360)), 0.0f);
         splash.transform.parent = collision.transform.parent;
+
         splash.SetActive(true);
     }
 
@@ -70,6 +79,8 @@ public class Player : MonoBehaviour
     private void DOBounce(Transform transform)
     {
         if (!transform) return;
+
+        PlayJumpingSound();
 
         Sequence sequence = DOTween.Sequence();
         sequence
@@ -86,6 +97,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        print("triggered");
+
         GameManager.instance.SetCanRotateCylinder(true);
     }
 
@@ -98,8 +111,6 @@ public class Player : MonoBehaviour
         isJumping = true;
 
         Invoke(nameof(SetIsJumpingFalse), 0.2f);
-
-        PlayJumpingSound();
     }
 
     private void SetIsJumpingFalse()
@@ -107,10 +118,14 @@ public class Player : MonoBehaviour
         isJumping = false;
     }
 
+    private void SetIsCollidedFalse()
+    {
+        isCollided = false;
+    }
+
     private void PlayJumpingSound()
     {
-        _audioSource.pitch = Random.Range(0.95f, 1.05f);
-        _audioSource.Play();
+        _audioSource.PlayRandomly();
     }
 
     private void StopBall()

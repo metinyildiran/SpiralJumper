@@ -16,7 +16,7 @@ public static class Utils
         return anObject;
     }
 
-    public static T Print<T>(this T anObject, string message = "") where T : notnull
+    public static T Print<T>(this T anObject, string message) where T : notnull
     {
         if (anObject == null)
         {
@@ -27,6 +27,18 @@ public static class Utils
         Debug.Log($"{message}: {anObject}");
 
         return anObject;
+    }
+
+    public static void PlayRandomly(this AudioSource audioSource)
+    {
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.Play();
+    }
+
+    public static void PlayRandomly(this AudioSource audioSource, float minPitch, float maxPitch)
+    {
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+        audioSource.Play();
     }
 
     public static GameObject[] GetChildren(this GameObject parent)
