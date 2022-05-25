@@ -12,9 +12,12 @@ public class GameManager : MonoBehaviour
 
     public delegate void OnGameStart();
     public delegate void OnGameStop();
+    public delegate void OnGameFinished();
 
     public event OnGameStart onGameStart;
-    public event OnGameStop onGameStop;
+    public event OnGameStop onGameFailed;
+    public event OnGameFinished onGameFinished;
+
 
     private void Awake()
     {
@@ -47,12 +50,19 @@ public class GameManager : MonoBehaviour
 
     public void GameFailed()
     {
-        onGameStop.Invoke();
+        onGameFailed.Invoke();
 
         StopTime();
 
         canRotateCylinder = false;
         isGameFailed = true;
+    }
+
+    public void GameFinished()
+    {
+        onGameFinished.Invoke();
+
+        StopTime();
     }
 
     public void StopTime()

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5952554301950489287}
   - component: {fileID: 5952554301950489281}
   - component: {fileID: 5952554301950489282}
+  - component: {fileID: 1241443145}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -114,7 +115,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.45, z: 0.45}
+  m_Size: {x: 0.36, y: 0.36, z: 0.45}
   m_Center: {x: 0, y: -1.8609314e-18, z: 0.250131}
 --- !u!82 &5952554301950489281
 AudioSource:
@@ -224,3 +225,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: badf45b9ca8050a44be8f5b62673c955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &1241443145
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798976696347676573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.2500001
+  m_Center: {x: -0.00000006088297, y: -0.000000090685305, z: 0.25000006}

@@ -32,6 +32,7 @@ namespace Core
 
         public void LoadNextLevel()
         {
+            GameManager.instance.StartTime();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 

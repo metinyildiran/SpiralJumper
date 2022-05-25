@@ -4,20 +4,23 @@ public class UIManager : MonoBehaviour
 {
     private GameObject uiCanvas;
     private GameObject inGameUI;
-    private GameObject endGameUI;
+    private GameObject failedGameUI;
+    private GameObject finishedGameUI;
 
     private void Awake()
     {
         FindObjectOfType<UIManager>();
         uiCanvas = GameObject.Find("UI");
         inGameUI = uiCanvas.GetChild("InGameUI");
-        endGameUI = uiCanvas.GetChild("EndGameUI");
+        failedGameUI = uiCanvas.GetChild("FailedGameUI");
+        finishedGameUI = uiCanvas.GetChild("FinishedLevelUI");
     }
 
     private void Start()
     {
         GameManager.instance.onGameStart += HideInGameUI;
-        GameManager.instance.onGameStop += ShowEndGameUI;
+        GameManager.instance.onGameFailed += ShowFailedGameUI;
+        GameManager.instance.onGameFinished += ShowFinishedGameUI;
     }
 
     private void HideInGameUI()
@@ -25,8 +28,20 @@ public class UIManager : MonoBehaviour
         inGameUI.SetActive(false);
     }
 
-    private void ShowEndGameUI()
+    private void ShowFailedGameUI()
     {
-        endGameUI.SetActive(true);
+        failedGameUI.SetActive(true);
+    }
+
+    private void ShowFinishedGameUI()
+    {
+        finishedGameUI.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.onGameStart -= HideInGameUI;
+        GameManager.instance.onGameFailed -= ShowFailedGameUI;
+        GameManager.instance.onGameFinished -= ShowFinishedGameUI;
     }
 }
