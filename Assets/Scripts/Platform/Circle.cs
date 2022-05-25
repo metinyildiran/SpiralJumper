@@ -8,18 +8,18 @@ public class Circle : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         boxCollider.enabled = false;
 
-        Destroy();
+        Invoke(nameof(Destroy), 0.0f);
     }
 
     private void Destroy()
     {
-        foreach(GameObject o in gameObject.GetChildren())
+        foreach(Transform o in transform)
         {
-            Destroy(o);
+            o.gameObject.SetActive(false);
         }
     }
 }

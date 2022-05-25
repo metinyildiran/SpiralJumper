@@ -29,6 +29,26 @@ public static class Utils
         return anObject;
     }
 
+    public static RaycastHit[] DrawRay(Vector3 position, Vector3 direction, bool drawDebug = true)
+    {
+        if (drawDebug)
+        {
+            Debug.DrawRay(position, direction);
+        }
+
+        return Physics.RaycastAll(position, direction);
+    }
+
+    public static RaycastHit[] DrawRay(Vector3 position, Vector3 direction, Color color, bool drawDebug = true)
+    {
+        if (drawDebug)
+        {
+            Debug.DrawRay(position, direction, color);
+        }
+
+        return Physics.RaycastAll(position, direction);
+    }
+
     public static void PlayRandomly(this AudioSource audioSource)
     {
         audioSource.pitch = Random.Range(0.95f, 1.05f);
@@ -39,22 +59,6 @@ public static class Utils
     {
         audioSource.pitch = Random.Range(minPitch, maxPitch);
         audioSource.Play();
-    }
-
-    public static GameObject[] GetChildren(this GameObject parent)
-    {
-        GameObject[] children = null;
-        Transform[] trs = parent.GetComponentsInChildren<Transform>(true);
-
-        int count = 0;
-        foreach (Transform child in trs)
-        {
-            children[count] = child.gameObject;
-
-            count++;
-        }
-
-        return children;
     }
 
     public static GameObject GetChild(this GameObject parent, string childName)

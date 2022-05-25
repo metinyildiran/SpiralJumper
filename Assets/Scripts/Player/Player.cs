@@ -22,15 +22,58 @@ public class Player : MonoBehaviour
         splashParticle = Resources.Load<GameObject>("Prefabs/SplashParticle");
     }
 
-    private void Start()
+    private void Update()
     {
-        GameManager.instance.onGameStop += StopBall;
+        DrawMiddleRay();
+        DrawBottomRay();
+    }
 
-        DOTween.Init(true, true);
+    private void DrawMiddleRay()
+    {
+        Vector3 direction = new Vector3(2, 0, 0);
+        Vector3 position = transform.position + new Vector3(-1, 0.25f);
+
+        if (Physics.Raycast(position, direction))
+        {
+            GameManager.instance.SetCanFollow(true);
+        }
+    }
+
+    private void DrawBottomRay()
+    {
+        Vector3 direction = new Vector3(2, 0, 0);
+        Vector3 position = transform.position + new Vector3(-1, 0.1f);
+
+        if (Physics.Raycast(position, direction))
+        {
+            GameManager.instance.SetCanRotateCylinder(false);
+        }
+        else
+        {
+            DrawTopRay();
+        }
+    }
+
+    private void DrawTopRay()
+    {
+        Vector3 direction = new Vector3(2, 0, 0);
+        Vector3 position = transform.position + new Vector3(-1, 0.5f);
+
+        if (!Physics.Raycast(position, direction))
+        {
+            GameManager.instance.SetCanRotateCylinder(true);
+        }
+    }
+
+    private void SetCanRotateCylinder()
+    {
+        GameManager.instance.SetCanRotateCylinder(true);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        Jump();
+
         if (isCollided) return;
 
         isCollided = true;
@@ -44,16 +87,7 @@ public class Player : MonoBehaviour
             DOBounce(transform);
         }
 
-        if (collision.gameObject.CompareTag("RedObject"))
-        {
-            GameManager.instance.GameFailed();
-        }
-        else
-        {
-            Jump();
-        }
-
-        Invoke(nameof(SetIsCollidedFalse), 0.2f);
+        Invoke(nameof(SetIsCollidedFalse), 0.1f);
     }
 
     private void SpawnSplashObject(Collision collision)
@@ -89,28 +123,17 @@ public class Player : MonoBehaviour
             .Append(transform.DOShakeScale(0.1f, strength: 0.2f, vibrato: 1, randomness: 0));
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        GameManager.instance.SetCanRotateCylinder(false);
-        GameManager.instance.SetCanFollow(true);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        print("triggered");
-
-        GameManager.instance.SetCanRotateCylinder(true);
-    }
-
     private void Jump()
     {
         if (isJumping) return;
 
-        _rb.AddForce(Vector3.up * jumpForce);
-
         isJumping = true;
 
-        Invoke(nameof(SetIsJumpingFalse), 0.2f);
+        SetIsCollidedFalse();
+
+        _rb.AddForce(Vector3.up * jumpForce);
+
+        Invoke(nameof(SetIsJumpingFalse), 0.1f);
     }
 
     private void SetIsJumpingFalse()
@@ -126,10 +149,5 @@ public class Player : MonoBehaviour
     private void PlayJumpingSound()
     {
         _audioSource.PlayRandomly();
-    }
-
-    private void StopBall()
-    {
-        _rb.velocity = Vector3.zero;
     }
 }

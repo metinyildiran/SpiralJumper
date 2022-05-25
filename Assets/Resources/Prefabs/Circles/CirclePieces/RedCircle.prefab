@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5758107267903852731, guid: 223b314e87ac6ec419d242342799bb8c, type: 3}
       propertyPath: m_TagString
-      value: RedObject
+      value: BadObject
       objectReference: {fileID: 0}
     - target: {fileID: 7099074335925013480, guid: 223b314e87ac6ec419d242342799bb8c, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -77,3 +77,20 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2644dc94521266e43ac4e7c075b7ee22, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 223b314e87ac6ec419d242342799bb8c, type: 3}
+--- !u!1 &5908487804103795971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5758107267903852731, guid: 223b314e87ac6ec419d242342799bb8c, type: 3}
+  m_PrefabInstance: {fileID: 2168415424945108408}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5242284045553486974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5908487804103795971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abeb1b106f308643acc3bffe18c0dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

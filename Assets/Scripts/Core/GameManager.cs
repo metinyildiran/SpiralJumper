@@ -48,8 +48,21 @@ public class GameManager : MonoBehaviour
     public void GameFailed()
     {
         onGameStop.Invoke();
+
+        StopTime();
+
         canRotateCylinder = false;
         isGameFailed = true;
+    }
+
+    public void StopTime()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void StartTime()
+    {
+        Time.timeScale = 1;
     }
 
     public bool CanPlayGame()

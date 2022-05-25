@@ -6,13 +6,10 @@ namespace Core
     public class LevelManager : MonoBehaviour
     {
         public static LevelManager Instance;
-        private GameManager _gameManager;
 
         private void Awake()
         {
             Instance = this;
-        
-            _gameManager = FindObjectOfType<GameManager>();
         }
 
         private void Start()
@@ -29,6 +26,7 @@ namespace Core
 
         public void RestartLevel()
         {
+            GameManager.instance.StartTime();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
