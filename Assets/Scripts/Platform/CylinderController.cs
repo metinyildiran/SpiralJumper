@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public class CylinderController : MonoBehaviour
+public class CylinderController : TouchMove
 {
-    private Touch _touch;
     private readonly float keyboardMovementSensitivity = 3f;
     private readonly float touchMovementSensitivity = 0.25f;
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         if (GameManager.instance.CanPlayGame())
         {
             KeyboardControl();
-            TouchControl();
         }
     }
 
@@ -22,16 +22,11 @@ public class CylinderController : MonoBehaviour
         transform.Rotate(Vector3.up, -horizontalInput * keyboardMovementSensitivity);
     }
 
-    private void TouchControl()
+    protected override void OnTouchMoved(Touch touch)
     {
-        if (Input.touchCount > 0)
+        if (GameManager.instance.CanPlayGame())
         {
-            _touch = Input.GetTouch(0);
-
-            if (_touch.phase == TouchPhase.Moved)
-            {
-                transform.Rotate(Vector3.up, -_touch.deltaPosition.x * touchMovementSensitivity);
-            }
+            transform.Rotate(Vector3.up, -touch.deltaPosition.x * touchMovementSensitivity);
         }
     }
 }

@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : TouchMove
 {
-    private Touch _touch;
     public static GameManager instance;
 
     private bool canFollow = true;
@@ -24,28 +23,6 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         Application.targetFrameRate = 60;
-    }
-
-    private void Update()
-    {
-        if (isGameStarted) return;
-
-        IsGameStarted();
-    }
-
-    private void IsGameStarted()
-    {
-        if (Input.touchCount > 0)
-        {
-            _touch = Input.GetTouch(0);
-
-            if (_touch.phase == TouchPhase.Moved)
-            {
-                isGameStarted = true;
-
-                onGameStart.Invoke();
-            }
-        }
     }
 
     public void GameFailed()
@@ -93,5 +70,14 @@ public class GameManager : MonoBehaviour
     public void SetCanFollow(bool value)
     {
         canFollow = value;
+    }
+
+    protected override void OnTouchMoved(Touch touch)
+    {
+        if (isGameStarted) return;
+
+        isGameStarted = true;
+
+        onGameStart.Invoke();
     }
 }

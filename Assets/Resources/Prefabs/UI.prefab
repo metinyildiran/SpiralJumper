@@ -415,7 +415,6 @@ GameObject:
   - component: {fileID: 1161917895}
   - component: {fileID: 5684165337381360443}
   - component: {fileID: 3944041323764072502}
-  - component: {fileID: 6408275277047467858}
   - component: {fileID: 519876685760363498}
   m_Layer: 5
   m_Name: FailedGameUI
@@ -484,32 +483,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!61 &6408275277047467858
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161917894}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1080, y: 1920}
-  m_EdgeRadius: 0
 --- !u!114 &519876685760363498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,7 +506,6 @@ GameObject:
   - component: {fileID: 1682789522}
   - component: {fileID: 1682789525}
   - component: {fileID: 1682789524}
-  - component: {fileID: 1682789523}
   - component: {fileID: 6596087871968348020}
   m_Layer: 5
   m_Name: FinishedLevelUI
@@ -601,32 +573,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!61 &1682789523
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682789521}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1080, y: 1920}
-  m_EdgeRadius: 0
 --- !u!114 &6596087871968348020
 MonoBehaviour:
   m_ObjectHideFlags: 0

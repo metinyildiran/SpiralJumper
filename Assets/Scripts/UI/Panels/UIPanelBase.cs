@@ -1,9 +1,8 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-public abstract class UIPanelBase : MonoBehaviour
+public abstract class UIPanelBase : TouchPress
 {
-    private void OnMouseDown()
+    protected override void OnTouchPressed(Touch touch)
     {
         OnPressed();
     }
