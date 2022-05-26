@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private Rigidbody _rb;
     private AudioSource _audioSource;
     private GameObject splashParticle;
+    private GameObject splashObject;
 
     private float jumpForce = 400.0f;
     private bool isJumping;
@@ -20,48 +21,47 @@ public class Player : MonoBehaviour
         jumpForce *= _rb.mass;
 
         splashParticle = Resources.Load<GameObject>("Prefabs/SplashParticle");
+        splashObject = Resources.Load<GameObject>("Prefabs/Splash");
     }
 
     private void Update()
     {
-        DrawMiddleRay();
         DrawBottomRay();
     }
 
-    private void DrawMiddleRay()
+    private void DrawTopRay()
     {
+        Vector3 position = transform.position + new Vector3(-1, 0.5f);
         Vector3 direction = new Vector3(2, 0, 0);
-        Vector3 position = transform.position + new Vector3(-1, 0.25f);
 
-        if (Physics.Raycast(position, direction))
+        Debug.DrawRay(position, direction, Color.green);
+
+        if (!Physics.Raycast(position, direction))
         {
-            GameManager.instance.SetCanFollow(true);
+            GameManager.instance.SetCanRotateCylinder(true);
         }
     }
 
     private void DrawBottomRay()
     {
+        Vector3 position = transform.position + new Vector3(-1, 0.15f);
         Vector3 direction = new Vector3(2, 0, 0);
-        Vector3 position = transform.position + new Vector3(-1, 0.1f);
+
+        Debug.DrawRay(position, direction, Color.red);
 
         if (Physics.Raycast(position, direction))
         {
+            GameManager.instance.SetCanFollow(true);
             GameManager.instance.SetCanRotateCylinder(false);
+
+            //foreach (RaycastHit hit in Physics.RaycastAll(position, direction))
+            //{
+            //    Destroy(hit.collider.gameObject.transform.parent.gameObject);
+            //}
         }
         else
         {
             DrawTopRay();
-        }
-    }
-
-    private void DrawTopRay()
-    {
-        Vector3 direction = new Vector3(2, 0, 0);
-        Vector3 position = transform.position + new Vector3(-1, 0.5f);
-
-        if (!Physics.Raycast(position, direction))
-        {
-            GameManager.instance.SetCanRotateCylinder(true);
         }
     }
 
@@ -96,13 +96,11 @@ public class Player : MonoBehaviour
 
         SpawnSplashParticle();
 
-        GameObject splash = SplashPooler.SharedInstance.GetPooledObject();
+        GameObject splash = Instantiate(splashObject);
 
         splash.transform.position = transform.position + new Vector3(0, 0.05f);
         splash.transform.DORotate(new Vector3(0, Random.Range(0, 360)), 0.0f);
         splash.transform.parent = collision.transform.parent;
-
-        splash.SetActive(true);
     }
 
     private void SpawnSplashParticle()

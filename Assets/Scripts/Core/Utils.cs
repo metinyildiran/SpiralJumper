@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class Utils
 {
@@ -27,6 +29,21 @@ public static class Utils
         Debug.Log($"{message}: {anObject}");
 
         return anObject;
+    }
+
+    public static List<T> FindInterfaces<T>()
+    {
+        List<T> interfaces = new List<T>();
+        GameObject[] rootGameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
+        foreach (var rootGameObject in rootGameObjects)
+        {
+            T[] childrenInterfaces = rootGameObject.GetComponentsInChildren<T>(true);
+            foreach (var childInterface in childrenInterfaces)
+            {
+                interfaces.Add(childInterface);
+            }
+        }
+        return interfaces;
     }
 
     public static RaycastHit[] DrawRay(Vector3 position, Vector3 direction, bool drawDebug = true)
