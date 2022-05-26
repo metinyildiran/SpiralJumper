@@ -9,13 +9,17 @@ public class GameManager : TouchMove
     private bool isGameStarted = false;
     private bool isGameFailed = false;
 
+    private int _score;
+
     public delegate void OnGameStart();
     public delegate void OnGameStop();
     public delegate void OnGameFinished();
+    public delegate void OnScoreChanged(int score);
 
     public event OnGameStart onGameStart;
     public event OnGameStop onGameFailed;
     public event OnGameFinished onGameFinished;
+    public event OnScoreChanged onScoreChanged;
 
 
     private void Awake()
@@ -23,6 +27,15 @@ public class GameManager : TouchMove
         instance = this;
 
         Application.targetFrameRate = 60;
+    }
+
+    protected override void OnTouchMoved(Touch touch)
+    {
+        if (isGameStarted) return;
+
+        isGameStarted = true;
+
+        onGameStart.Invoke();
     }
 
     public void GameFailed()
@@ -40,6 +53,13 @@ public class GameManager : TouchMove
         onGameFinished.Invoke();
 
         StopTime();
+    }
+
+    public void AddScore()
+    {
+        _score += 10;
+
+        onScoreChanged.Invoke(_score);
     }
 
     public void StopTime()
@@ -70,14 +90,5 @@ public class GameManager : TouchMove
     public void SetCanFollow(bool value)
     {
         canFollow = value;
-    }
-
-    protected override void OnTouchMoved(Touch touch)
-    {
-        if (isGameStarted) return;
-
-        isGameStarted = true;
-
-        onGameStart.Invoke();
     }
 }
