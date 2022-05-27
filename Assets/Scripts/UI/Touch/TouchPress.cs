@@ -2,10 +2,9 @@
 
 public abstract class TouchPress : TouchBase
 {
-
     protected override void CheckTouchPhase(Touch touch)
     {
-        if (touch.phase == TouchPhase.Ended)
+        if (touch.phase == TouchPhase.Began)
         {
             OnTouchPressed(touch);
         }
