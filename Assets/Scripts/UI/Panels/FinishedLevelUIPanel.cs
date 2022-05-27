@@ -7,4 +7,3 @@ public class FinishedLevelUIPanel : UIPanelBase
         LevelManager.Instance.LoadNextLevel();
     }
 }
-

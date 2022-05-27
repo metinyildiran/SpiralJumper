@@ -7,6 +7,7 @@ public class GameManager : TouchMove
     private bool canFollow = true;
     private bool canRotateCylinder = true;
     private bool isGameStarted = false;
+    private bool isGameFinished = false;
     private bool isGameFailed = false;
 
     private int _score;
@@ -42,8 +43,6 @@ public class GameManager : TouchMove
     {
         onGameFailed.Invoke();
 
-        StopTime();
-
         canRotateCylinder = false;
         isGameFailed = true;
     }
@@ -52,7 +51,8 @@ public class GameManager : TouchMove
     {
         onGameFinished.Invoke();
 
-        StopTime();
+        canRotateCylinder = false;
+        isGameFinished = true;
     }
 
     public void AddScore()
@@ -62,19 +62,24 @@ public class GameManager : TouchMove
         onScoreChanged.Invoke(_score);
     }
 
-    public void StopTime()
+    public bool IsGameFailed()
     {
-        Time.timeScale = 0;
+        return isGameFailed;
     }
 
-    public void StartTime()
+    public bool IsGameFinished()
     {
-        Time.timeScale = 1;
+        return isGameFinished;
     }
 
     public bool CanPlayGame()
     {
-        return canRotateCylinder && !isGameFailed;
+        return isGameFailed || isGameFinished;
+    }
+
+    public bool GetCanRotateCylinder()
+    {
+        return canRotateCylinder;
     }
 
     public void SetCanRotateCylinder(bool value)

@@ -2,10 +2,9 @@
 
 public abstract class TouchMove : TouchBase
 {
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
 
+    protected override void CheckTouchPhase(Touch touch)
+    {
         if (touch.phase == TouchPhase.Moved)
         {
             OnTouchMoved(touch);

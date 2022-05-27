@@ -2,13 +2,11 @@
 
 public abstract class TouchPress : TouchBase
 {
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
 
+    protected override void CheckTouchPhase(Touch touch)
+    {
         if (touch.phase == TouchPhase.Ended)
         {
-            print("fdffgfgfdgfd");
             OnTouchPressed(touch);
         }
     }

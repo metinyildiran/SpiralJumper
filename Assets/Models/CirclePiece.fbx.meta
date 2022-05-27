@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f1034ca76fd38824bb68e64c94c90f07
+guid: aec3203ea52e24b4ba0c5c50757a6782
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -14,7 +14,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    removeConstantScaleCurves: 0
+    removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -44,7 +44,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    nodeNameCollisionStrategy: 0
+    nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0

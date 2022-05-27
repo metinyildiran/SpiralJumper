@@ -9,10 +9,12 @@ public class CylinderController : TouchMove
     {
         base.FixedUpdate();
 
-        if (GameManager.instance.CanPlayGame())
+#if UNITY_EDITOR
+        if (GameManager.instance.GetCanRotateCylinder())
         {
             KeyboardControl();
         }
+#endif
     }
 
     private void KeyboardControl()
@@ -24,7 +26,7 @@ public class CylinderController : TouchMove
 
     protected override void OnTouchMoved(Touch touch)
     {
-        if (GameManager.instance.CanPlayGame())
+        if (GameManager.instance.GetCanRotateCylinder())
         {
             transform.Rotate(Vector3.up, -touch.deltaPosition.x * touchMovementSensitivity);
         }

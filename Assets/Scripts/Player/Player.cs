@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private AudioSource _audioSource;
     private GameObject splashParticle;
     private GameObject splashObject;
+    private BoxCollider _boxCollider;
 
     private float jumpForce = 400.0f;
     private bool isJumping;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
+        _boxCollider = GetComponent<BoxCollider>();
 
         jumpForce *= _rb.mass;
 
@@ -26,13 +28,15 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.CanPlayGame()) return;
+
         DrawBottomRay();
     }
 
     private void DrawTopRay()
     {
-        Vector3 position = transform.position + new Vector3(-1, 0.5f);
-        Vector3 direction = new Vector3(2, 0, 0);
+        Vector3 position = transform.position + new Vector3(-3, 0.5f, 0.5f);
+        Vector3 direction = new Vector3(6, 0, 0);
 
         Debug.DrawRay(position, direction, Color.green);
 
@@ -44,8 +48,8 @@ public class Player : MonoBehaviour
 
     private void DrawBottomRay()
     {
-        Vector3 position = transform.position + new Vector3(-1, 0.15f);
-        Vector3 direction = new Vector3(2, 0, 0);
+        Vector3 position = transform.position + new Vector3(-3, 0.1f, 0.5f);
+        Vector3 direction = new Vector3(6, 0, 0);
 
         Debug.DrawRay(position, direction, Color.red);
 
@@ -53,11 +57,6 @@ public class Player : MonoBehaviour
         {
             GameManager.instance.SetCanFollow(true);
             GameManager.instance.SetCanRotateCylinder(false);
-
-            //foreach (RaycastHit hit in Physics.RaycastAll(position, direction))
-            //{
-            //    Destroy(hit.collider.gameObject.transform.parent.gameObject);
-            //}
         }
         else
         {
@@ -65,13 +64,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void SetCanRotateCylinder()
-    {
-        GameManager.instance.SetCanRotateCylinder(true);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
+        // ToDo: Buras? çal??m?yor
+        if (GameManager.instance.CanPlayGame()) return;
+
         Jump();
 
         if (isCollided) return;

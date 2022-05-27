@@ -26,13 +26,11 @@ namespace Core
 
         public void RestartLevel()
         {
-            GameManager.instance.StartTime();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         public void LoadNextLevel()
         {
-            GameManager.instance.StartTime();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
@@ -47,7 +45,7 @@ namespace Core
         //    {
         //        _gameManager.ResetData();
         //    }
-        
+
         //    SceneManager.LoadScene(1);
         //}
 

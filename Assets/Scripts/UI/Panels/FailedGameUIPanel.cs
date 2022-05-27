@@ -1,6 +1,6 @@
 using Core;
 
-public class EndGameUIPanel : UIPanelBase
+public class FailedGameUIPanel : UIPanelBase
 {
     protected override void OnPressed()
     {

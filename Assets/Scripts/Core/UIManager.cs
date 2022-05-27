@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
         inGameUI = uiCanvas.GetChild("InGameUI");
         failedGameUI = uiCanvas.GetChild("FailedGameUI");
         finishedGameUI = uiCanvas.GetChild("FinishedLevelUI");
-        scoreText = inGameUI.GetChild("ScoreText").GetComponent<TMP_Text>();
+        scoreText = uiCanvas.GetChild("ScoreText").GetComponent<TMP_Text>();
     }
 
     private void Start()
