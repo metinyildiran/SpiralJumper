@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 public class GameManager : TouchMove
 {
@@ -23,14 +24,16 @@ public class GameManager : TouchMove
     public event OnScoreChanged onScoreChanged;
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         instance = this;
 
         Application.targetFrameRate = 60;
     }
 
-    protected override void OnTouchMoved(Touch touch)
+    protected override void OnTouchMoved(CallbackContext context)
     {
         if (isGameStarted) return;
 

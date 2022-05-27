@@ -1,8 +1,6 @@
-using UnityEngine;
-
 public abstract class UIPanelBase : TouchPress
 {
-    protected override void OnTouchPressed(Touch touch)
+    protected override void OnTouchPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         OnPressed();
     }

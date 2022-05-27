@@ -2,17 +2,22 @@
 
 public abstract class TouchBase : MonoBehaviour
 {
-    private Touch touch;
+    protected TouchControls touchControls;
 
-    protected virtual void FixedUpdate()
+    protected virtual void Awake()
     {
-        if (Input.touchCount > 0)
-        {
-            touch = Input.GetTouch(0);
-
-            CheckTouchPhase(touch);
-        }
+        touchControls = new TouchControls();
     }
 
-    protected abstract void CheckTouchPhase(Touch touch);
+    private void OnEnable()
+    {
+        if (touchControls != null)
+            touchControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (touchControls != null)
+            touchControls.Disable();
+    }
 }

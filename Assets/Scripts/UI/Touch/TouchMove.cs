@@ -1,15 +1,12 @@
-﻿using UnityEngine;
+﻿using static UnityEngine.InputSystem.InputAction;
 
 public abstract class TouchMove : TouchBase
 {
-
-    protected override void CheckTouchPhase(Touch touch)
+    private void Start()
     {
-        if (touch.phase == TouchPhase.Moved)
-        {
-            OnTouchMoved(touch);
-        }
+        if (touchControls != null)
+            touchControls.MainCylinder.Rotate.started += context => OnTouchMoved(context);
     }
 
-    protected abstract void OnTouchMoved(Touch touch);
+    protected abstract void OnTouchMoved(CallbackContext context);
 }

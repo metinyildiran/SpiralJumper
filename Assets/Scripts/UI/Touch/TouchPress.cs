@@ -1,14 +1,12 @@
-﻿using UnityEngine;
+﻿using static UnityEngine.InputSystem.InputAction;
 
 public abstract class TouchPress : TouchBase
 {
-    protected override void CheckTouchPhase(Touch touch)
+    private void Start()
     {
-        if (touch.phase == TouchPhase.Began)
-        {
-            OnTouchPressed(touch);
-        }
+        if (touchControls != null)
+            touchControls.UI.Press.performed += context => OnTouchPressed(context);
     }
 
-    protected abstract void OnTouchPressed(Touch touch);
+    protected abstract void OnTouchPressed(CallbackContext context);
 }

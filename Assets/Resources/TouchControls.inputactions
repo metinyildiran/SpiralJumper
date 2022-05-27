@@ -1,0 +1,62 @@
+{
+    "name": "TouchControls",
+    "maps": [
+        {
+            "name": "MainCylinder",
+            "id": "f0a79a1f-ffdb-4201-8fb3-402ae81f1abe",
+            "actions": [
+                {
+                    "name": "Rotate",
+                    "type": "PassThrough",
+                    "id": "4a794f39-a5c8-4229-b53f-502085986572",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7fa56669-c02a-49a5-8694-8e0ce334df46",
+                    "path": "<Touchscreen>/delta/x",
+                    "interactions": "Hold(duration=0.01)",
+                    "processors": "Scale(factor=1.5)",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "450bfc5e-aaec-4e50-ad2b-3899b26f0c89",
+            "actions": [
+                {
+                    "name": "Press",
+                    "type": "Button",
+                    "id": "ee3a8781-da1e-47a9-9f6b-8c2af3cba5dc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "12ebec1c-406f-410d-baac-dc94a0b6b821",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
