@@ -11,13 +11,11 @@ public abstract class TouchBase : MonoBehaviour
 
     private void OnEnable()
     {
-        if (touchControls != null)
-            touchControls.Enable();
+        touchControls.Enable();
     }
 
     private void OnDisable()
     {
-        if (touchControls != null)
-            touchControls.Disable();
+        touchControls.Disable();
     }
 }

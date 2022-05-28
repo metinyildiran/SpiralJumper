@@ -19,7 +19,9 @@ public class PlayerCamera : MonoBehaviour
 
     private void FollowPlayer()
     {
-        var transform1 = transform.position;
+        if (!player) return;
+
+        Vector3 transform1 = transform.position;
         transform1.y = player.transform.position.y + 3.0f;
 
         transform.position = transform1;

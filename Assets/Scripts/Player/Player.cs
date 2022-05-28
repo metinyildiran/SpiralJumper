@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private GameObject splashObject;
     private BoxCollider _boxCollider;
 
-    private float jumpForce = 400.0f;
+    private const float jumpForce = 400.0f;
     private bool isJumping;
     private bool isCollided;
 
@@ -19,8 +19,6 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _audioSource = GetComponent<AudioSource>();
         _boxCollider = GetComponent<BoxCollider>();
-
-        jumpForce *= _rb.mass;
 
         splashParticle = Resources.Load<GameObject>("Prefabs/SplashParticle");
         splashObject = Resources.Load<GameObject>("Prefabs/Splash");
@@ -53,10 +51,16 @@ public class Player : MonoBehaviour
 
         Debug.DrawRay(position, direction, Color.red);
 
-        if (Physics.Raycast(position, direction))
+        Ray ray = new Ray(position, direction);
+        if (Physics.Raycast(ray, out var hit, LayerMask.GetMask("CirclePiece")))
         {
             GameManager.instance.SetCanFollow(true);
             GameManager.instance.SetCanRotateCylinder(false);
+
+            if (hit.collider)
+            {
+                Destroy(hit.collider.gameObject);
+            }
         }
         else
         {
@@ -66,7 +70,6 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // ToDo: Buras? çal??m?yor
         if (GameManager.instance.CanPlayGame()) return;
 
         Jump();

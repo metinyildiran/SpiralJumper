@@ -39,12 +39,12 @@ public class GameManager : TouchMove
 
         isGameStarted = true;
 
-        onGameStart.Invoke();
+        onGameStart?.Invoke();
     }
 
     public void GameFailed()
     {
-        onGameFailed.Invoke();
+        onGameFailed?.Invoke();
 
         canRotateCylinder = false;
         isGameFailed = true;
@@ -52,7 +52,7 @@ public class GameManager : TouchMove
 
     public void GameFinished()
     {
-        onGameFinished.Invoke();
+        onGameFinished?.Invoke();
 
         canRotateCylinder = false;
         isGameFinished = true;
@@ -62,7 +62,7 @@ public class GameManager : TouchMove
     {
         _score += 10;
 
-        onScoreChanged.Invoke(_score);
+        onScoreChanged?.Invoke(_score);
     }
 
     public bool IsGameFailed()

@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5758107267903852731, guid: 223b314e87ac6ec419d242342799bb8c, type: 3}
       propertyPath: m_Name
-      value: BadCircle
+      value: BadCirclePiece
       objectReference: {fileID: 0}
     - target: {fileID: 5758107267903852731, guid: 223b314e87ac6ec419d242342799bb8c, type: 3}
       propertyPath: m_TagString
