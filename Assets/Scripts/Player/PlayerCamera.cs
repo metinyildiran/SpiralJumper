@@ -7,6 +7,8 @@ public class PlayerCamera : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        SetPerspectiveSize();
     }
 
     private void Update()
@@ -15,6 +17,12 @@ public class PlayerCamera : MonoBehaviour
         {
             FollowPlayer();
         }
+    }
+
+    private void SetPerspectiveSize()
+    {
+        float currentAspect = (float)Screen.width / (float)Screen.height;
+        Camera.main.fieldOfView = Mathf.Floor(1920 / currentAspect / 75.85f);
     }
 
     private void FollowPlayer()

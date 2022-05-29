@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -103,4 +106,39 @@ public static class Utils
 
         return null;
     }
+
+#if UNITY_EDITOR
+    public static GameObject SpawnPrefab(string path)
+    {
+        GameObject gameObject = PrefabUtility.InstantiatePrefab(Resources.Load<GameObject>(path)) as GameObject;
+        EditorUtility.SetDirty(gameObject);
+
+        return gameObject;
+    }
+
+    public static GameObject SpawnPrefab(string path, GameObject parent)
+    {
+
+        GameObject gameObject = PrefabUtility.InstantiatePrefab(Resources.Load<GameObject>(path), parent.transform) as GameObject;
+        EditorUtility.SetDirty(gameObject);
+
+        return gameObject;
+    }
+
+    public static GameObject SpawnPrefab(GameObject o)
+    {
+        GameObject gameObject = PrefabUtility.InstantiatePrefab(o) as GameObject;
+        EditorUtility.SetDirty(gameObject);
+
+        return gameObject;
+    }
+
+    public static GameObject SpawnPrefab(GameObject o, GameObject parent)
+    {
+        GameObject gameObject = PrefabUtility.InstantiatePrefab(o, parent.transform) as GameObject;
+        EditorUtility.SetDirty(gameObject);
+
+        return gameObject;
+    }
+#endif
 }

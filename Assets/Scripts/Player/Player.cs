@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     private GameObject splashObject;
     private BoxCollider _boxCollider;
 
-    private const float jumpForce = 400.0f;
+    private const float jumpForce = 350.0f;
+    private const float maxSpeed = 15.0f;
+
     private bool isJumping;
     private bool isCollided;
 
@@ -31,6 +33,14 @@ public class Player : MonoBehaviour
         DrawBottomRay();
     }
 
+    private void FixedUpdate()
+    {
+        if (_rb.velocity.magnitude > maxSpeed)
+        {
+            _rb.velocity = _rb.velocity.normalized * maxSpeed;
+        }
+    }
+
     private void DrawTopRay()
     {
         Vector3 position = transform.position + new Vector3(-3, 0.5f, 0.5f);
@@ -40,7 +50,7 @@ public class Player : MonoBehaviour
 
         if (!Physics.Raycast(position, direction))
         {
-            GameManager.instance.SetCanRotateCylinder(true);
+            //GameManager.instance.SetCanRotateCylinder(true);
         }
     }
 
@@ -55,11 +65,11 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(ray, out var hit, LayerMask.GetMask("CirclePiece")))
         {
             GameManager.instance.SetCanFollow(true);
-            GameManager.instance.SetCanRotateCylinder(false);
+            //GameManager.instance.SetCanRotateCylinder(false);
 
             if (hit.collider)
             {
-                Destroy(hit.collider.gameObject);
+                //Destroy(hit.collider.gameObject);
             }
         }
         else
