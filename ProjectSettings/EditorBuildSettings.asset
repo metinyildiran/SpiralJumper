@@ -9,30 +9,30 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/Level 1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Resources/Scenes/Level2.unity
-    guid: ee7143aa8e54a38458c60e3d7a5bb9ad
+    path: Assets/Resources/Scenes/Level 2.unity
+    guid: 99bf2301c14b12c4991538a235db099d
   - enabled: 1
-    path: Assets/Resources/Scenes/Level3.unity
-    guid: e609cccd1291d7949be4ee2df95745ee
+    path: Assets/Resources/Scenes/Level 3.unity
+    guid: 1dfb29353dc20e04e87d97ac9655459b
   - enabled: 1
-    path: Assets/Resources/Scenes/Level4.unity
-    guid: 0e940e27a4655a54ca3a108b47e560b4
+    path: Assets/Resources/Scenes/Level 4.unity
+    guid: 8f8bbf3e79c79284eb5b6651e65851af
   - enabled: 1
-    path: Assets/Resources/Scenes/Level5.unity
-    guid: 18b1a0757b219be4d913ce201c62195b
+    path: Assets/Resources/Scenes/Level 5.unity
+    guid: 4863add065645c7468f1e02971eaf03f
   - enabled: 1
-    path: Assets/Resources/Scenes/Level6.unity
-    guid: 701014f3c8da3744f93d252ec5255912
+    path: Assets/Resources/Scenes/Level 6.unity
+    guid: 9f5c79a391817ff48b4ea3b1431ef02b
   - enabled: 1
-    path: Assets/Resources/Scenes/Level7.unity
-    guid: 9e4995edd901cd94487643bc6b72f2c0
+    path: Assets/Resources/Scenes/Level 7.unity
+    guid: 3b640052b0d698a4d9ee0837a42b011c
   - enabled: 1
-    path: Assets/Resources/Scenes/Level8.unity
-    guid: 03f854f9fa1eb1c4280f05da65176fd5
+    path: Assets/Resources/Scenes/Level 8.unity
+    guid: 7076258c0ca2b594eae29ffc95e7e998
   - enabled: 1
-    path: Assets/Resources/Scenes/Level9.unity
-    guid: 20bf5862989d61643bfced9f47e52b06
+    path: Assets/Resources/Scenes/Level 9.unity
+    guid: d6207b4dfc507c847a35904c36c080df
   - enabled: 1
-    path: Assets/Resources/Scenes/Level10.unity
-    guid: 1a180878bf1e119448f8fd19b9d658b1
+    path: Assets/Resources/Scenes/Level 10.unity
+    guid: e1251aa4ba7193246aa562a8ab5602a8
   m_configObjects: {}
