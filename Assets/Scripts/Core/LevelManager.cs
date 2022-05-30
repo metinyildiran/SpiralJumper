@@ -17,10 +17,7 @@ namespace Core
             //var isLastLevel = SceneManager.GetActiveScene().name.Equals("Last Level");
             //if (isLastLevel)
             //{
-            //    if (_gameManager)
-            //    {
-            //        _gameManager.ResetData();
-            //    }
+            //    GameManager.instance.ResetData();
             //}
         }
 
@@ -34,10 +31,10 @@ namespace Core
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-        //public void LoadLastRemainingLevel()
-        //{
-        //    SceneManager.LoadScene(_gameManager.LastFinishedLevel + 1);
-        //}
+        public void LoadLastRemainingLevel()
+        {
+            SceneManager.LoadScene(GameManager.instance.LastFinishedLevel + 1);
+        }
 
         //public void StartNewGame()
         //{
@@ -52,11 +49,6 @@ namespace Core
         public void QuitGame()
         {
             Application.Quit(0);
-        }
-
-        public void GoToMainMenu()
-        {
-            SceneManager.LoadScene(0);
         }
     }
 }

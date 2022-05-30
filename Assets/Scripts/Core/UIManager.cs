@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0) return;
+
         uiCanvas = GameObject.Find("UI");
         inGameUI = uiCanvas.GetChild("InGameUI");
         failedGameUI = uiCanvas.GetChild("FailedGameUI");

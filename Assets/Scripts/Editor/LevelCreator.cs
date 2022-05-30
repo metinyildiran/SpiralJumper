@@ -15,8 +15,8 @@ public class LevelCreator : EditorWindow
     GameObject MainCylinder;
     private int levelCount;
 
-    [MenuItem("Tools/Level Creator")]
-    public static void ShowWindow()
+    [MenuItem("Tools/Qubits/Level Creator")]
+    public static void ShowLevelCreator()
     {
         GetWindow<LevelCreator>("Level Creator");
     }
