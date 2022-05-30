@@ -8,6 +8,7 @@ TagManager:
   - GoodObject
   - MainCylinder
   - Circle
+  - SpecialParticle
   layers:
   - Default
   - TransparentFX

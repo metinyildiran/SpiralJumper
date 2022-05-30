@@ -57,7 +57,7 @@ MonoBehaviour:
     sh[25]: 0
     sh[26]: 0
   customReflection: {fileID: 0}
-  reflectionIntensity: 0
+  reflectionIntensity: 1
   reflectionBounces: 1
   defaultReflectionMode: 0
   defaultReflectionResolution: 128

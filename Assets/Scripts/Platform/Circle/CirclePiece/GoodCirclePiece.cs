@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class BadCirclePart : CirclePieceBase
+public class GoodCirclePiece : CirclePieceBase
 {
     protected override void OnCollisionEnter(Collision collision)
     {
-        GameManager.instance.GameFailed();
+
     }
 }

@@ -20,25 +20,27 @@ public class RenderSettingsWrapperGenerator : EditorWindow, IPreprocessBuildWith
     [MenuItem("Tools/Narry/Build Rendersettings Caches")]
     private static void RebuildRenderSettingsWrappers()
     {
-        //for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {
-            UnityEditor.SceneManagement.EditorSceneManager.OpenScene(SceneUtility.GetScenePathByBuildIndex(i));
-            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(i));
-            var scene = SceneManager.GetActiveScene();
-            var rswo = ScriptableObject.CreateInstance<RenderSettingsWrapperObject>();
-            rswo.SetWrapperFromRenderSettings();
-            EditorUtility.SetDirty(rswo);
-            var dest = "Assets/Resources/Render Settings.asset";
 
-            if (!AssetDatabase.IsValidFolder("Assets/Resources"))
-            {
-                AssetDatabase.CreateFolder("Assets", "Resources");
-            }
-
-            AssetDatabase.CreateAsset(rswo, dest);
-            AssetDatabase.SaveAssets();
         }
+
+        UnityEditor.SceneManagement.EditorSceneManager.OpenScene(SceneUtility.GetScenePathByBuildIndex(1));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
+        var scene = SceneManager.GetActiveScene();
+        var rswo = ScriptableObject.CreateInstance<RenderSettingsWrapperObject>();
+        rswo.SetWrapperFromRenderSettings();
+        EditorUtility.SetDirty(rswo);
+        var dest = "Assets/Resources/Render Settings.asset";
+
+        if (!AssetDatabase.IsValidFolder("Assets/Resources"))
+        {
+            AssetDatabase.CreateFolder("Assets", "Resources");
+        }
+
+        AssetDatabase.CreateAsset(rswo, dest);
+        AssetDatabase.SaveAssets();
+
         UnityEditor.SceneManagement.EditorSceneManager.OpenScene(SceneUtility.GetScenePathByBuildIndex(0));
         UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(0));
     }

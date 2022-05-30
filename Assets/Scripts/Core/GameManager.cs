@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.IO;
 using Core;
 using UnityEngine;
@@ -14,20 +15,23 @@ public class GameManager : TouchMove
     private bool isGameStarted = false;
     private bool isGameFinished = false;
     private bool isGameFailed = false;
+    private bool isSpecialActive = false;
 
     public int LastFinishedLevel { get; private set; }
     private int _score;
+    private int specialCount;
 
     public delegate void OnGameStart();
-    public delegate void OnGameStop();
+    public delegate void OnGameFailed();
     public delegate void OnGameFinished();
     public delegate void OnScoreChanged(int score);
+    public delegate void OnSpecialChanged(bool isActive);
 
     public event OnGameStart onGameStart;
-    public event OnGameStop onGameFailed;
+    public event OnGameFailed onGameFailed;
     public event OnGameFinished onGameFinished;
     public event OnScoreChanged onScoreChanged;
-
+    public event OnSpecialChanged onSpecialChanged;
 
     protected override void Awake()
     {
@@ -75,11 +79,47 @@ public class GameManager : TouchMove
         onGameFinished?.Invoke();
     }
 
-    public void AddScore()
+    public void AddScore(int score = 10)
     {
-        _score += 10;
+        _score += score;
 
         onScoreChanged?.Invoke(_score);
+    }
+
+    public void OnCirclePassed()
+    {
+        AddScore();
+
+        CheckSpecial();
+    }
+
+    private void CheckSpecial()
+    {
+        specialCount++;
+
+        if (specialCount >= 3)
+        {
+            StartCoroutine(SetIsSpecialActive(true));
+        }
+    }
+
+    public bool GetIsSpecialActive()
+    {
+        return isSpecialActive;
+    }
+
+    public IEnumerator SetIsSpecialActive(bool value, float waitSeconds = 0.0f)
+    {
+        onSpecialChanged?.Invoke(value);
+
+        yield return new WaitForSeconds(waitSeconds);
+
+        if (!value)
+        {
+            specialCount = 0;
+        }
+
+        isSpecialActive = value;
     }
 
     public bool IsGameFailed()

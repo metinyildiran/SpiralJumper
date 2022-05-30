@@ -99,7 +99,7 @@ public class LevelCreator : EditorWindow
 
             SpawnCircles();
 
-            EditorSceneManager.SaveScene(newScene, $"Assets/Resources/Scenes/Level {(GetSceneCount() / 2) + 1}.unity");
+            EditorSceneManager.SaveScene(newScene, $"Assets/Resources/Scenes/Level {(GetSceneCount() / 2)}.unity");
         }
     }
 
@@ -140,7 +140,7 @@ public class LevelCreator : EditorWindow
 
     private void SetRenderSettings()
     {
-        RenderSettings.reflectionIntensity = _renderSettings.reflectionIntensity;
+        RenderSettings.reflectionIntensity = 1;
         RenderSettings.skybox = null;
         RenderSettings.ambientLight = _renderSettings.ambientLight;
     }

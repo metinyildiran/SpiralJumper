@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private Rigidbody _rb;
     private AudioSource _audioSource;
     private GameObject splashParticle;
+    private ParticleSystem specialParticle;
     private GameObject splashObject;
     private BoxCollider _boxCollider;
 
@@ -23,7 +24,14 @@ public class Player : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider>();
 
         splashParticle = Resources.Load<GameObject>("Prefabs/SplashParticle");
+        specialParticle = GameObject.FindGameObjectWithTag("SpecialParticle").GetComponent<ParticleSystem>();
         splashObject = Resources.Load<GameObject>("Prefabs/Splash");
+    }
+
+    private void Start()
+    {
+        GameManager.instance.onSpecialChanged += OnSpecialChanged;
+        GameManager.instance.onGameFailed += DODestroyBall;
     }
 
     private void Update()
@@ -41,19 +49,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void DrawTopRay()
-    {
-        Vector3 position = transform.position + new Vector3(-3, 0.5f, 0.5f);
-        Vector3 direction = new Vector3(6, 0, 0);
-
-        Debug.DrawRay(position, direction, Color.green);
-
-        if (!Physics.Raycast(position, direction))
-        {
-            //GameManager.instance.SetCanRotateCylinder(true);
-        }
-    }
-
     private void DrawBottomRay()
     {
         Vector3 position = transform.position + new Vector3(-3, 0.1f, 0.5f);
@@ -65,22 +60,29 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(ray, out var hit, LayerMask.GetMask("CirclePiece")))
         {
             GameManager.instance.SetCanFollow(true);
-            //GameManager.instance.SetCanRotateCylinder(false);
-
-            if (hit.collider)
-            {
-                //Destroy(hit.collider.gameObject);
-            }
-        }
-        else
-        {
-            DrawTopRay();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        StartCoroutine(GameManager.instance.SetIsSpecialActive(false));
+
         if (GameManager.instance.CanPlayGame()) return;
+
+
+
+        #region Check Special
+        if (GameManager.instance.GetIsSpecialActive())
+        {
+            Jump();
+
+            collision.gameObject.GetComponent<CirclePieceBase>().DestroyParent();
+
+            StartCoroutine(GameManager.instance.SetIsSpecialActive(false, 0.01f));
+
+            return;
+        }
+        #endregion
 
         Jump();
 
@@ -98,6 +100,13 @@ public class Player : MonoBehaviour
         }
 
         Invoke(nameof(SetIsCollidedFalse), 0.1f);
+    }
+
+    private void DODestroyBall()
+    {
+        if (!transform) return;
+
+        transform.DOScale(Vector3.zero, 1f);
     }
 
     private void SpawnSplashObject(Collision collision)
@@ -129,6 +138,18 @@ public class Player : MonoBehaviour
             .Append(transform.DOScaleZ(0.6f, 0.1f))
             .Append(transform.DOScaleZ(1f, 0.1f))
             .Append(transform.DOShakeScale(0.1f, strength: 0.2f, vibrato: 1, randomness: 0));
+    }
+
+    private void OnSpecialChanged(bool isActive)
+    {
+        if (isActive)
+        {
+            specialParticle.Play();
+        }
+        else
+        {
+            specialParticle.Stop();
+        }
     }
 
     private void Jump()

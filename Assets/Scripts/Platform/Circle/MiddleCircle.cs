@@ -4,6 +4,6 @@ public class MiddleCircle : CircleBase
 {
     protected override void OnTriggerEnter(Collider other)
     {
-        GameManager.instance.AddScore();
+        GameManager.instance.OnCirclePassed();
     }
 }
