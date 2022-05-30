@@ -2,7 +2,7 @@
 
 public abstract class TouchMove : TouchBase
 {
-    private void Start()
+    protected virtual void Start()
     {
         touchControls.MainCylinder.Rotate.started += context => OnTouchMoved(context);
     }

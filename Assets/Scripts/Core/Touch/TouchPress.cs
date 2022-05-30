@@ -2,7 +2,7 @@
 
 public abstract class TouchPress : TouchBase
 {
-    private void Start()
+    protected virtual void Start()
     {
         touchControls.UI.Press.performed += context => OnTouchPressed(context);
     }

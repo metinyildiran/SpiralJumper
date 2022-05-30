@@ -44,8 +44,10 @@ public class GameManager : TouchMove
         Application.targetFrameRate = 60;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             LevelManager.Instance.LoadLastRemainingLevel();
@@ -103,6 +105,13 @@ public class GameManager : TouchMove
         }
     }
 
+    public bool CanPlayGame()
+    {
+        return isGameFailed || isGameFinished;
+    }
+
+    #region Getters and Setters
+
     public bool GetIsSpecialActive()
     {
         return isSpecialActive;
@@ -122,19 +131,14 @@ public class GameManager : TouchMove
         isSpecialActive = value;
     }
 
-    public bool IsGameFailed()
+    public bool GetIsGameFailed()
     {
         return isGameFailed;
     }
 
-    public bool IsGameFinished()
+    public bool GetIsGameFinished()
     {
         return isGameFinished;
-    }
-
-    public bool CanPlayGame()
-    {
-        return isGameFailed || isGameFinished;
     }
 
     public bool GetCanRotateCylinder()
@@ -156,6 +160,10 @@ public class GameManager : TouchMove
     {
         canFollow = value;
     }
+
+    #endregion
+
+    #region Saving and Loading
 
     [Serializable]
     public class Data
@@ -201,4 +209,5 @@ public class GameManager : TouchMove
         var json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
+    #endregion
 }

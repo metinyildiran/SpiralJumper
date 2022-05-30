@@ -69,8 +69,6 @@ public class Player : MonoBehaviour
 
         if (GameManager.instance.CanPlayGame()) return;
 
-
-
         #region Check Special
         if (GameManager.instance.GetIsSpecialActive())
         {
@@ -142,6 +140,8 @@ public class Player : MonoBehaviour
 
     private void OnSpecialChanged(bool isActive)
     {
+        if (GameManager.instance.GetIsGameFailed()) return;
+
         if (isActive)
         {
             specialParticle.Play();

@@ -13,7 +13,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.IsGameFailed()) return;
+        if (GameManager.instance.GetIsGameFailed()) return;
 
         if (GameManager.instance.GetCanFollow())
         {
