@@ -13,9 +13,9 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.GetIsGameFailed()) return;
+        if (GameManager.Instance.GetIsGameFailed()) return;
 
-        if (GameManager.instance.GetCanFollow())
+        if (GameManager.Instance.GetCanFollow())
         {
             FollowPlayer();
         }

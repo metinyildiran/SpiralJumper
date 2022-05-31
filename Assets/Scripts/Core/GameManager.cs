@@ -8,7 +8,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class GameManager : TouchMove
 {
-    public static GameManager instance;
+    public static GameManager Instance { get; private set; }
 
     private bool canFollow = true;
     private bool canRotateCylinder = true;
@@ -21,17 +21,11 @@ public class GameManager : TouchMove
     private int _score;
     private int specialCount;
 
-    public delegate void OnGameStart();
-    public delegate void OnGameFailed();
-    public delegate void OnGameFinished();
-    public delegate void OnScoreChanged(int score);
-    public delegate void OnSpecialChanged(bool isActive);
-
-    public event OnGameStart onGameStart;
-    public event OnGameFailed onGameFailed;
-    public event OnGameFinished onGameFinished;
-    public event OnScoreChanged onScoreChanged;
-    public event OnSpecialChanged onSpecialChanged;
+    public event Action OnGameStart;
+    public event Action OnGameFailed;
+    public event Action OnGameFinished;
+    public event Action<int> OnScoreChanged;
+    public event Action<bool> OnSpecialChanged;
 
     protected override void Awake()
     {
@@ -39,7 +33,7 @@ public class GameManager : TouchMove
 
         LoadData();
 
-        instance = this;
+        Instance = this;
 
         Application.targetFrameRate = 60;
     }
@@ -60,7 +54,7 @@ public class GameManager : TouchMove
 
         isGameStarted = true;
 
-        onGameStart?.Invoke();
+        OnGameStart?.Invoke();
     }
 
     public void GameFailed()
@@ -68,7 +62,7 @@ public class GameManager : TouchMove
         canRotateCylinder = false;
         isGameFailed = true;
 
-        onGameFailed?.Invoke();
+        OnGameFailed?.Invoke();
     }
 
     public void GameFinished()
@@ -78,14 +72,21 @@ public class GameManager : TouchMove
 
         SaveData();
 
-        onGameFinished?.Invoke();
+        OnGameFinished?.Invoke();
     }
 
     public void AddScore(int score = 10)
     {
-        _score += score;
+        if (isSpecialActive)
+        {
+            _score += score * 3;
+        }
+        else
+        {
+            _score += score;
+        }
 
-        onScoreChanged?.Invoke(_score);
+        OnScoreChanged?.Invoke(_score);
     }
 
     public void OnCirclePassed()
@@ -119,7 +120,7 @@ public class GameManager : TouchMove
 
     public IEnumerator SetIsSpecialActive(bool value, float waitSeconds = 0.0f)
     {
-        onSpecialChanged?.Invoke(value);
+        OnSpecialChanged?.Invoke(value);
 
         yield return new WaitForSeconds(waitSeconds);
 

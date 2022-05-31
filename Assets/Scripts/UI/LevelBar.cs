@@ -14,7 +14,7 @@ public class LevelBar : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.onScoreChanged += FillUpBar;
+        GameManager.Instance.OnScoreChanged += FillUpBar;
     }
 
     private void FillUpBar(int score)
@@ -28,6 +28,6 @@ public class LevelBar : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.instance.onScoreChanged -= FillUpBar;
+        GameManager.Instance.OnScoreChanged -= FillUpBar;
     }
 }

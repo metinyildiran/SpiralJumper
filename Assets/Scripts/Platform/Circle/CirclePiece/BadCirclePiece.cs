@@ -4,9 +4,9 @@ public class BadCirclePiece : CirclePieceBase
 {
     protected override void OnCollisionEnter(Collision collision)
     {
-        if (!GameManager.instance.GetIsSpecialActive())
+        if (!GameManager.Instance.GetIsSpecialActive())
         {
-            GameManager.instance.GameFailed();
+            GameManager.Instance.GameFailed();
         }
     }
 }

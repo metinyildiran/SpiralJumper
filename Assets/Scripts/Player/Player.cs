@@ -30,13 +30,13 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.onSpecialChanged += OnSpecialChanged;
-        GameManager.instance.onGameFailed += DODestroyBall;
+        GameManager.Instance.OnSpecialChanged += OnSpecialChanged;
+        GameManager.Instance.OnGameFailed += DODestroyBall;
     }
 
     private void Update()
     {
-        if (GameManager.instance.CanPlayGame()) return;
+        if (GameManager.Instance.CanPlayGame()) return;
 
         DrawBottomRay();
     }
@@ -59,24 +59,24 @@ public class Player : MonoBehaviour
         Ray ray = new Ray(position, direction);
         if (Physics.Raycast(ray, out var hit, LayerMask.GetMask("CirclePiece")))
         {
-            GameManager.instance.SetCanFollow(true);
+            GameManager.Instance.SetCanFollow(true);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        StartCoroutine(GameManager.instance.SetIsSpecialActive(false));
+        StartCoroutine(GameManager.Instance.SetIsSpecialActive(false));
 
-        if (GameManager.instance.CanPlayGame()) return;
+        if (GameManager.Instance.CanPlayGame()) return;
 
         #region Check Special
-        if (GameManager.instance.GetIsSpecialActive())
+        if (GameManager.Instance.GetIsSpecialActive())
         {
             Jump();
 
             collision.gameObject.GetComponent<CirclePieceBase>().DestroyParent();
 
-            StartCoroutine(GameManager.instance.SetIsSpecialActive(false, 0.01f));
+            StartCoroutine(GameManager.Instance.SetIsSpecialActive(false, 0.01f));
 
             return;
         }
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
 
         if (collision.contacts[0].normal == Vector3.up)
         {
-            GameManager.instance.SetCanFollow(false);
+            GameManager.Instance.SetCanFollow(false);
 
             SpawnSplashObject(collision);
 
@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
 
     private void OnSpecialChanged(bool isActive)
     {
-        if (GameManager.instance.GetIsGameFailed()) return;
+        if (GameManager.Instance.GetIsGameFailed()) return;
 
         if (isActive)
         {

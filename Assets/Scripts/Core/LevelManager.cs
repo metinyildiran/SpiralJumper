@@ -33,7 +33,7 @@ namespace Core
 
         public void LoadLastRemainingLevel()
         {
-            SceneManager.LoadScene(GameManager.instance.LastFinishedLevel + 1);
+            SceneManager.LoadScene(GameManager.Instance.LastFinishedLevel + 1);
         }
 
         //public void StartNewGame()

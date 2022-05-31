@@ -1,8 +1,9 @@
 using Core;
+using UnityEngine.InputSystem;
 
-public class FailedGameUIPanel : UIPanelBase
+public class FailedGameUIPanel : TouchPress
 {
-    protected override void OnPressed()
+    protected override void OnTouchPressed(InputAction.CallbackContext context)
     {
         LevelManager.Instance.RestartLevel();
     }

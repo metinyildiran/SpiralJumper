@@ -142,7 +142,7 @@ public class LevelCreator : EditorWindow
     {
         RenderSettings.reflectionIntensity = 1;
         RenderSettings.skybox = null;
-        RenderSettings.ambientLight = _renderSettings.ambientLight;
+        RenderSettings.ambientLight = new Color(0.267f, 0.267f, 0.267f, 1.000f);
     }
 
     private void ClearMainCylinder()

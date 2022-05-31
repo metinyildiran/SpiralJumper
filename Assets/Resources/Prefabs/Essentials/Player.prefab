@@ -9993,7 +9993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8791456235987938811, guid: 708986fd208a4b846b92825bab501228, type: 3}
       propertyPath: SubModule.subEmitters.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8791456235987938811, guid: 708986fd208a4b846b92825bab501228, type: 3}
       propertyPath: SubModule.subEmitters.Array.data[0].emitter
@@ -10004,7 +10004,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1995052486}
     - target: {fileID: 8791456235987938811, guid: 708986fd208a4b846b92825bab501228, type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].emitProbability
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791456235987938811, guid: 708986fd208a4b846b92825bab501228, type: 3}
       propertyPath: SubModule.subEmitters.Array.data[1].emitProbability
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791456235987938811, guid: 708986fd208a4b846b92825bab501228, type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[2].emitProbability
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8791456235987938812, guid: 708986fd208a4b846b92825bab501228, type: 3}

@@ -4,9 +4,9 @@ public class BottomCircle : CircleBase
 {
     protected override void OnTriggerEnter(Collider other)
     {
-        if (!GameManager.instance.GetIsGameFailed())
+        if (!GameManager.Instance.GetIsGameFailed())
         {
-            GameManager.instance.GameFinished();
+            GameManager.Instance.GameFinished();
         }
     }
 }

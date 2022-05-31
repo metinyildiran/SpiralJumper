@@ -4,7 +4,8 @@ public abstract class CirclePieceBase : MonoBehaviour
 {
     public void DestroyParent()
     {
-        GameManager.instance.AddScore(20);
+        GameManager.Instance.AddScore(20);
+
         Destroy(transform.parent.gameObject);
     }
 

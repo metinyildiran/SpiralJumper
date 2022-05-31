@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     private GameObject uiCanvas;
-    private GameObject inGameUI;
     private GameObject failedGameUI;
     private GameObject finishedGameUI;
     private TMP_Text scoreText;
@@ -16,7 +15,6 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0) return;
 
         uiCanvas = GameObject.Find("UI");
-        inGameUI = uiCanvas.GetChild("InGameUI");
         failedGameUI = uiCanvas.GetChild("FailedGameUI");
         finishedGameUI = uiCanvas.GetChild("FinishedLevelUI");
         scoreText = uiCanvas.GetChild("ScoreText").GetComponent<TMP_Text>();
@@ -24,15 +22,9 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.onGameStart += HideInGameUI;
-        GameManager.instance.onGameFailed += ShowFailedGameUI;
-        GameManager.instance.onGameFinished += ShowFinishedGameUI;
-        GameManager.instance.onScoreChanged += SetScoreText;
-    }
-
-    private void HideInGameUI()
-    {
-        inGameUI.SetActive(false);
+        GameManager.Instance.OnGameFailed += ShowFailedGameUI;
+        GameManager.Instance.OnGameFinished += ShowFinishedGameUI;
+        GameManager.Instance.OnScoreChanged += SetScoreText;
     }
 
     private void ShowFailedGameUI()
@@ -54,14 +46,14 @@ public class UIManager : MonoBehaviour
 
     private void DOPunch()
     {
+        scoreText.transform.DOKill();
         scoreText.transform.DOPunchScale(new Vector3(0.3f, 0.3f, 0.3f), 0.1f);
     }
 
     private void OnDestroy()
     {
-        GameManager.instance.onGameStart -= HideInGameUI;
-        GameManager.instance.onGameFailed -= ShowFailedGameUI;
-        GameManager.instance.onGameFinished -= ShowFinishedGameUI;
-        GameManager.instance.onScoreChanged -= SetScoreText;
+        GameManager.Instance.OnGameFailed -= ShowFailedGameUI;
+        GameManager.Instance.OnGameFinished -= ShowFinishedGameUI;
+        GameManager.Instance.OnScoreChanged -= SetScoreText;
     }
 }

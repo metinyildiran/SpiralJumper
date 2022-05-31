@@ -1,8 +1,9 @@
 ﻿using Core;
+using UnityEngine.InputSystem;
 
-public class FinishedLevelUIPanel : UIPanelBase
+public class FinishedLevelUIPanel : TouchPress
 {
-    protected override void OnPressed()
+    protected override void OnTouchPressed(InputAction.CallbackContext context)
     {
         LevelManager.Instance.LoadNextLevel();
     }
