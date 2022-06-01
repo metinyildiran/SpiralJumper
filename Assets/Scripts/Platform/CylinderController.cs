@@ -3,7 +3,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class CylinderController : TouchMove
 {
-    private const float touchMovementSensitivity = 0.25f;
+    private const float touchMovementSensitivity = 0.35f;
 
     protected override void OnTouchMoved(CallbackContext context)
     {

@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     private Rigidbody _rb;
     private GameObject splashParticle;
-    private GameObject splashParticlePlus;
     private ParticleSystem specialParticle;
     private GameObject splashObject;
     private BoxCollider _boxCollider;
@@ -23,7 +22,6 @@ public class Player : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider>();
 
         splashParticle = Resources.Load<GameObject>("Prefabs/SplashParticle");
-        splashParticlePlus = Resources.Load<GameObject>("Prefabs/SplashParticlePlus");
         specialParticle = GameObject.FindGameObjectWithTag("SpecialParticle").GetComponent<ParticleSystem>();
         splashObject = Resources.Load<GameObject>("Prefabs/Splash");
     }
@@ -129,14 +127,7 @@ public class Player : MonoBehaviour
 
     private void SpawnSplashParticle()
     {
-        if (GameManager.Instance.GetIsSpecialActive())
-        {
-            Instantiate(splashParticlePlus, transform.position, Quaternion.Euler(new Vector3(-90, 0)));
-        }
-        else
-        {
-            Instantiate(splashParticle, transform.position, Quaternion.Euler(new Vector3(-90, 0)));
-        }
+        Instantiate(splashParticle, transform.position, Quaternion.Euler(new Vector3(-90, 0)));
     }
 
     private void DOBounce(Transform transform)

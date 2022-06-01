@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
         failedGameUI = uiCanvas.GetChild("FailedGameUI");
         finishedGameUI = uiCanvas.GetChild("FinishedLevelUI");
         scoreText = uiCanvas.GetChild("ScoreText").GetComponent<TMP_Text>();
+
+        scoreText.color = Resources.Load<Material>("Materials/M_Text").color;
     }
 
     private void Start()
