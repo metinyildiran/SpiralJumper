@@ -6,7 +6,7 @@ public class BadCirclePiece : CirclePieceBase
     {
         if (!GameManager.Instance.GetIsSpecialActive())
         {
-            GameManager.Instance.GameFailed();
+            GameManager.Instance.SetGameFailed();
         }
     }
 }

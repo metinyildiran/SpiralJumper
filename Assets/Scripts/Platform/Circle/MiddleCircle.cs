@@ -7,6 +7,7 @@ public class MiddleCircle : CircleBase
         if (!GameManager.Instance.GetIsGameFailed())
         {
             GameManager.Instance.OnCirclePassed();
+            AudioManager.Instance.PlayPassSound();
         }
     }
 }

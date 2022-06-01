@@ -1,12 +1,12 @@
 using DG.Tweening;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(AudioSource))]
+[RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
     private Rigidbody _rb;
-    private AudioSource _audioSource;
     private GameObject splashParticle;
+    private GameObject splashParticlePlus;
     private ParticleSystem specialParticle;
     private GameObject splashObject;
     private BoxCollider _boxCollider;
@@ -20,10 +20,10 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _audioSource = GetComponent<AudioSource>();
         _boxCollider = GetComponent<BoxCollider>();
 
         splashParticle = Resources.Load<GameObject>("Prefabs/SplashParticle");
+        splashParticlePlus = Resources.Load<GameObject>("Prefabs/SplashParticlePlus");
         specialParticle = GameObject.FindGameObjectWithTag("SpecialParticle").GetComponent<ParticleSystem>();
         splashObject = Resources.Load<GameObject>("Prefabs/Splash");
     }
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnSpecialChanged += OnSpecialChanged;
-        GameManager.Instance.OnGameFailed += DODestroyBall;
+        GameManager.Instance.OnGameFailed += DOScaleDownBall;
     }
 
     private void Update()
@@ -42,6 +42,11 @@ public class Player : MonoBehaviour
     }
 
     private void FixedUpdate()
+    {
+        LimitMaxSpeed();
+    }
+
+    private void LimitMaxSpeed()
     {
         if (_rb.velocity.magnitude > maxSpeed)
         {
@@ -74,6 +79,8 @@ public class Player : MonoBehaviour
         {
             Jump();
 
+            SpawnSplashObject(collision);
+
             collision.gameObject.GetComponent<CirclePieceBase>().DestroyParent();
 
             StartCoroutine(GameManager.Instance.SetIsSpecialActive(false, 0.01f));
@@ -100,7 +107,7 @@ public class Player : MonoBehaviour
         Invoke(nameof(SetIsCollidedFalse), 0.1f);
     }
 
-    private void DODestroyBall()
+    private void DOScaleDownBall()
     {
         if (!transform) return;
 
@@ -122,14 +129,19 @@ public class Player : MonoBehaviour
 
     private void SpawnSplashParticle()
     {
-        Instantiate(splashParticle, transform.position, Quaternion.Euler(new Vector3(-90, 0)));
+        if (GameManager.Instance.GetIsSpecialActive())
+        {
+            Instantiate(splashParticlePlus, transform.position, Quaternion.Euler(new Vector3(-90, 0)));
+        }
+        else
+        {
+            Instantiate(splashParticle, transform.position, Quaternion.Euler(new Vector3(-90, 0)));
+        }
     }
 
     private void DOBounce(Transform transform)
     {
         if (!transform) return;
-
-        PlayJumpingSound();
 
         Sequence sequence = DOTween.Sequence();
         sequence
@@ -140,8 +152,6 @@ public class Player : MonoBehaviour
 
     private void OnSpecialChanged(bool isActive)
     {
-        if (GameManager.Instance.GetIsGameFailed()) return;
-
         if (isActive)
         {
             specialParticle.Play();
@@ -158,6 +168,8 @@ public class Player : MonoBehaviour
 
         isJumping = true;
 
+        AudioManager.Instance.PlayJumpingSound();
+
         SetIsCollidedFalse();
 
         _rb.AddForce(Vector3.up * jumpForce);
@@ -173,10 +185,5 @@ public class Player : MonoBehaviour
     private void SetIsCollidedFalse()
     {
         isCollided = false;
-    }
-
-    private void PlayJumpingSound()
-    {
-        _audioSource.PlayRandomly();
     }
 }

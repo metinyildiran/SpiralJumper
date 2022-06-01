@@ -57,9 +57,10 @@ public class GameManager : TouchMove
         OnGameStart?.Invoke();
     }
 
-    public void GameFailed()
+    public void SetGameFailed()
     {
         canRotateCylinder = false;
+        canFollow = false;
         isGameFailed = true;
 
         OnGameFailed?.Invoke();
@@ -69,6 +70,7 @@ public class GameManager : TouchMove
     {
         canRotateCylinder = false;
         isGameFinished = true;
+        canFollow = false;
 
         SaveData();
 
@@ -77,6 +79,8 @@ public class GameManager : TouchMove
 
     public void AddScore(int score = 10)
     {
+        if (isGameFailed) return;
+
         if (isSpecialActive)
         {
             _score += score * 3;
@@ -120,6 +124,8 @@ public class GameManager : TouchMove
 
     public IEnumerator SetIsSpecialActive(bool value, float waitSeconds = 0.0f)
     {
+        if (!CanPlayGame()) yield return null;
+
         OnSpecialChanged?.Invoke(value);
 
         yield return new WaitForSeconds(waitSeconds);

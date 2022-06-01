@@ -75,10 +75,22 @@ public static class Utils
         audioSource.Play();
     }
 
+    public static void PlayRandomly(this AudioSource audioSource, AudioClip audioClip)
+    {
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.PlayOneShot(audioClip);
+    }
+
     public static void PlayRandomly(this AudioSource audioSource, float minPitch, float maxPitch)
     {
         audioSource.pitch = Random.Range(minPitch, maxPitch);
         audioSource.Play();
+    }
+
+    public static void PlayRandomly(this AudioSource audioSource, AudioClip audioClip, float minPitch, float maxPitch)
+    {
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+        audioSource.PlayOneShot(audioClip);
     }
 
     public static GameObject GetChild(this GameObject parent, string childName)
