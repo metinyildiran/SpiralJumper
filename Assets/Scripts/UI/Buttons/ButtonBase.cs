@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Buttons
+public abstract class ButtonBase : MonoBehaviour, IPointerUpHandler
 {
-    public abstract class ButtonBase : MonoBehaviour, IPointerUpHandler
+    public void OnPointerUp(PointerEventData eventData)
     {
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            OnPressed();
-        }
-
-        protected abstract void OnPressed();
+        OnPressed();
     }
+
+    protected abstract void OnPressed();
 }

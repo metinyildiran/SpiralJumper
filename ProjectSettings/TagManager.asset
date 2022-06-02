@@ -9,6 +9,7 @@ TagManager:
   - MainCylinder
   - Circle
   - SpecialParticle
+  - SingleCircle
   layers:
   - Default
   - TransparentFX

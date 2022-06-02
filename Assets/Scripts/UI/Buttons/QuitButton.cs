@@ -1,12 +1,9 @@
 ﻿using Core;
 
-namespace Buttons
+public class QuitButton : ButtonBase
 {
-    public class QuitButton : ButtonBase
+    protected override void OnPressed()
     {
-        protected override void OnPressed()
-        {
-            LevelManager.Instance.QuitGame();
-        }
+        LevelManager.Instance.QuitGame();
     }
 }
