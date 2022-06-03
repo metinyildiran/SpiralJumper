@@ -294,6 +294,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9e6ac86d984fd748ae33065f9cd917a, type: 3}
+--- !u!21 &458919253
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/GradientBackground
+  m_Shader: {fileID: 4800000, guid: c9a60f12d0b2d49a7b1b088312686f70, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &579634181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -463,6 +491,122 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.atime2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.atime3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.atime4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.atime5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.ctime2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.ctime3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.ctime4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.ctime5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key0.b
+      value: 0.16060004
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key0.g
+      value: 0.73333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key0.r
+      value: 0.5526314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key1.b
+      value: 0.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key1.g
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key1.r
+      value: 0.77475935
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key2.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key2.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key2.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key3.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key3.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key3.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key4.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key4.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key4.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key5.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key5.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: Gradient.key5.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: _backgroundGradientMaterial
+      value: 
+      objectReference: {fileID: 1712142015}
+    - target: {fileID: 8066693157918689129, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: _backgroundRenderBakedTextureMaterial
+      value: 
+      objectReference: {fileID: 458919253}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
 --- !u!1001 &1154920752
@@ -807,6 +951,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bf0ee74ee567d943944411330ef5e17, type: 3}
+--- !u!21 &1712142015
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/GradientBackground
+  m_Shader: {fileID: 4800000, guid: c9a60f12d0b2d49a7b1b088312686f70, type: 3}
+  m_ValidKeywords:
+  - VERTICAL_GRADIENT
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &1770592931
 PrefabInstance:
   m_ObjectHideFlags: 0

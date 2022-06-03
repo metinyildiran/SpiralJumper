@@ -18,6 +18,15 @@ public class AudioManager : MonoBehaviour
 
         jumpClip = Resources.Load<AudioClip>("Sounds/BallJumpingSound");
         passClip = Resources.Load<AudioClip>("Sounds/PassSound");
+
+        if (PlayerPrefs.GetInt(nameof(isMuted), 0) == 0)
+        {
+            isMuted = false;
+        }
+        else
+        {
+            isMuted = true;
+        }
     }
 
     public void PlayJumpingSound()
@@ -40,10 +49,12 @@ public class AudioManager : MonoBehaviour
         if (isMuted)
         {
             isMuted = false;
+            PlayerPrefs.SetInt(nameof(isMuted), 0);
         }
         else
         {
             isMuted = true;
+            PlayerPrefs.SetInt(nameof(isMuted), 1);
         }
 
         return isMuted;

@@ -38,6 +38,7 @@ public class ColorManager : MonoBehaviour
         Resources.Load<Material>("Materials/M_Ball").color = colorLibrary.colors[index].ballColor;
         Resources.Load<Material>("Materials/M_Splash").SetColor("_EmissionColor", colorLibrary.colors[index].ballColor);
         Resources.Load<Material>("Materials/M_Special").color = colorLibrary.colors[index].ballColor;
+        Resources.Load<Material>("Materials/M_Particle").color = colorLibrary.colors[index].ballColor;
         Resources.Load<Material>("Materials/M_Trail").SetColor("_EmissionColor", colorLibrary.colors[index].ballColor);
     }
 }
