@@ -349,22 +349,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 453836652050613670, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
-      propertyPath: m_BackGroundColor.a
+    - target: {fileID: 3912911448174767287, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 453836652050613670, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.4039216
+    - target: {fileID: 3912911448174767287, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 453836652050613670, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.43529415
-      objectReference: {fileID: 0}
-    - target: {fileID: 453836652050613670, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.2784314
-      objectReference: {fileID: 0}
+    - target: {fileID: 6706105225064362410, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a19082004c1a5d44ba11b720611a38df, type: 3}
+    - target: {fileID: 6706105225064362410, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eba15c147e10514f9982c043ccdeffe, type: 3}
 --- !u!1001 &715510679

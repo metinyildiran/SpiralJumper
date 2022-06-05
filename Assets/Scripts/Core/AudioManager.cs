@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource audioSource;
     private AudioClip jumpClip;
     private AudioClip passClip;
+    private AudioClip clickClip;
 
     private bool isMuted;
 
@@ -18,6 +19,7 @@ public class AudioManager : MonoBehaviour
 
         jumpClip = Resources.Load<AudioClip>("Sounds/BallJumpingSound");
         passClip = Resources.Load<AudioClip>("Sounds/PassSound");
+        clickClip = Resources.Load<AudioClip>("Sounds/ButtonClick");
 
         if (PlayerPrefs.GetInt(nameof(isMuted), 0) == 0)
         {
@@ -58,5 +60,12 @@ public class AudioManager : MonoBehaviour
         }
 
         return isMuted;
+    }
+
+    public void PlayButtonClick()
+    {
+        if (isMuted) return;
+
+        audioSource.PlayOneShot(clickClip);
     }
 }
