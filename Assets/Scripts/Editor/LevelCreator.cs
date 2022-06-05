@@ -192,8 +192,8 @@ public class LevelCreator : EditorWindow
     private void SetRenderSettings()
     {
         RenderSettings.reflectionIntensity = 1;
-        RenderSettings.skybox = null;
-        RenderSettings.ambientLight = new Color(0.267f, 0.267f, 0.267f, 1.000f);
+        RenderSettings.skybox = Resources.Load<Material>("Materials/M_GradientSkyBackground");
+        RenderSettings.ambientIntensity = 0.3f;
     }
 
     private void ClearMainCylinder()

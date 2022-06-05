@@ -23,39 +23,39 @@ MonoBehaviour:
   ambientSkyColor: {r: 0.267, g: 0.267, b: 0.267, a: 1}
   ambientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   ambientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  ambientIntensity: 1
+  ambientIntensity: 0.3
   ambientLight: {r: 0.267, g: 0.267, b: 0.267, a: 1}
   subtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  skybox: {fileID: 0}
+  skybox: {fileID: 2100000, guid: 53a6e3ec6c8b7784398e04942bbf68f8, type: 2}
   sun: {fileID: 0}
   ambientProbe:
-    sh[ 0]: 0.057949293
-    sh[ 1]: 0
+    sh[ 0]: 0.033715945
+    sh[ 1]: 0.0088365115
     sh[ 2]: 0
-    sh[ 3]: 0
-    sh[ 4]: 0
-    sh[ 5]: 0
-    sh[ 6]: 0
-    sh[ 7]: 0
-    sh[ 8]: 0
-    sh[ 9]: 0.057949293
-    sh[10]: 0
+    sh[ 3]: 6.899386e-12
+    sh[ 4]: -1.7792472e-11
+    sh[ 5]: -3.4104553e-10
+    sh[ 6]: 0.00034156992
+    sh[ 7]: 5.8216496e-12
+    sh[ 8]: 0.0010247281
+    sh[ 9]: 0.04162405
+    sh[10]: 0.0031264615
     sh[11]: 0
-    sh[12]: 0
-    sh[13]: 0
-    sh[14]: 0
-    sh[15]: 0
-    sh[16]: 0
-    sh[17]: 0
-    sh[18]: 0.057949293
-    sh[19]: 0
+    sh[12]: 3.4800475e-11
+    sh[13]: -1.5572947e-11
+    sh[14]: -1.3641821e-10
+    sh[15]: 0.00013140347
+    sh[16]: -3.8568528e-12
+    sh[17]: 0.00039418874
+    sh[18]: 0.022002244
+    sh[19]: 0.014632088
     sh[20]: 0
-    sh[21]: 0
-    sh[22]: 0
-    sh[23]: 0
-    sh[24]: 0
-    sh[25]: 0
-    sh[26]: 0
+    sh[21]: -3.0266126e-12
+    sh[22]: -4.811971e-12
+    sh[23]: 1.3641821e-10
+    sh[24]: 0.0004062264
+    sh[25]: -4.5659383e-12
+    sh[26]: 0.0012186861
   customReflection: {fileID: 0}
   reflectionIntensity: 1
   reflectionBounces: 1
