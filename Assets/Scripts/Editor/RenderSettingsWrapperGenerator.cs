@@ -31,12 +31,7 @@ public class RenderSettingsWrapperGenerator : EditorWindow, IPreprocessBuildWith
         var rswo = ScriptableObject.CreateInstance<RenderSettingsWrapperObject>();
         rswo.SetWrapperFromRenderSettings();
         EditorUtility.SetDirty(rswo);
-        var dest = "Assets/Resources/Render Settings.asset";
-
-        if (!AssetDatabase.IsValidFolder("Assets/Resources"))
-        {
-            AssetDatabase.CreateFolder("Assets", "Resources");
-        }
+        var dest = "Assets/Resources/Settings/Render Settings.asset";
 
         AssetDatabase.CreateAsset(rswo, dest);
         AssetDatabase.SaveAssets();
