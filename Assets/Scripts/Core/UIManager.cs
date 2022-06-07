@@ -12,6 +12,11 @@ public class UIManager : MonoBehaviour
     private TMP_Text rewardText;
     private TMP_Text dragToPlayText;
 
+    private void OnGUI()
+    {
+        ((int)(1.0f / Time.smoothDeltaTime)).PrintScreen("FPS");
+    }
+
     private void Awake()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0) return;

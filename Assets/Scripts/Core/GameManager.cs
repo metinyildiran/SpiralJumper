@@ -38,11 +38,6 @@ public class GameManager : TouchMove
         Application.targetFrameRate = 60;
     }
 
-    //private void Update()
-    //{
-    //    Utils.PrintScreen(((int)(1.0f / Time.deltaTime)).ToString(), "FPS");
-    //}
-
     protected override void Start()
     {
         base.Start();

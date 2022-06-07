@@ -34,18 +34,23 @@ public static class Utils
         return anObject;
     }
 
-
     public static T PrintScreen<T>(this T anObject) where T : notnull
     {
 #if DEBUG
-        TMPro.TMP_Text text = GameObject.FindGameObjectWithTag("DebugText").GetComponent<TMPro.TMP_Text>();
+        GUIStyle customStyle = new()
+        {
+            fontSize = 36,
+            alignment = TextAnchor.LowerLeft,
+            wordWrap = false
+        };
+
         if (anObject == null)
         {
-            text.text = "Null";
+            GUI.TextArea(new Rect(0, Screen.height - 100, 100, 100), "Null", customStyle);
             return default;
         }
 
-        text.text = $"{anObject}";
+        GUI.TextArea(new Rect(0, Screen.height - 100, 100, 100), anObject.ToString(), customStyle);
 
         return anObject;
 #endif
@@ -57,14 +62,20 @@ public static class Utils
     public static T PrintScreen<T>(this T anObject, string message) where T : notnull
     {
 #if DEBUG
-        TMPro.TMP_Text text = GameObject.FindGameObjectWithTag("DebugText").GetComponent<TMPro.TMP_Text>();
+        GUIStyle customStyle = new()
+        {
+            fontSize = 36,
+            alignment = TextAnchor.LowerLeft,
+            wordWrap = false
+        };
+
         if (anObject == null)
         {
-            text.text = "Null";
+            GUI.TextArea(new Rect(0, Screen.height - 100, 100, 100), "Null", customStyle);
             return default;
         }
 
-        text.text = $"{message}: {anObject}";
+        GUI.TextArea(new Rect(0, Screen.height - 100, 100, 100), $"{message}: {anObject}", customStyle);
 
         return anObject;
 #endif
