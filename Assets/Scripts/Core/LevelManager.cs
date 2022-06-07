@@ -28,12 +28,28 @@ namespace Core
 
         public void LoadNextLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCountInBuildSettings)
+            {
+                GameManager.Instance.ResetData();
+                SceneManager.LoadScene(GameManager.Instance.LastFinishedLevel + 1);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
 
         public void LoadLastRemainingLevel()
         {
-            SceneManager.LoadScene(GameManager.Instance.LastFinishedLevel + 1);
+            if (GameManager.Instance.LastFinishedLevel + 1 >= SceneManager.sceneCountInBuildSettings)
+            {
+                GameManager.Instance.ResetData();
+                SceneManager.LoadScene(GameManager.Instance.LastFinishedLevel + 1);
+            }
+            else
+            {
+                SceneManager.LoadScene(GameManager.Instance.LastFinishedLevel + 1);
+            }
         }
 
         //public void StartNewGame()

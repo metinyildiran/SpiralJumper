@@ -1,16 +1,16 @@
 using TMPro;
 using UnityEngine;
 
-public abstract class TextBase : MonoBehaviour
+public class TextBase : MonoBehaviour
 {
-    private TMP_Text levelText;
+    private TMP_Text tmp_text;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        levelText = GetComponent<TMP_Text>();
+        tmp_text = GetComponent<TMP_Text>();
 
-        SetText(levelText);
+        SetText(tmp_text);
     }
 
-    protected abstract void SetText(TMP_Text levelText);
+    protected virtual void SetText(TMP_Text tmp_text) { }
 }

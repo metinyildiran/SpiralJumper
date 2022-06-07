@@ -34,6 +34,45 @@ public static class Utils
         return anObject;
     }
 
+
+    public static T PrintScreen<T>(this T anObject) where T : notnull
+    {
+#if DEBUG
+        TMPro.TMP_Text text = GameObject.FindGameObjectWithTag("DebugText").GetComponent<TMPro.TMP_Text>();
+        if (anObject == null)
+        {
+            text.text = "Null";
+            return default;
+        }
+
+        text.text = $"{anObject}";
+
+        return anObject;
+#endif
+#pragma warning disable CS0162 // Unreachable code detected
+        return anObject;
+#pragma warning restore CS0162 // Unreachable code detected
+    }
+
+    public static T PrintScreen<T>(this T anObject, string message) where T : notnull
+    {
+#if DEBUG
+        TMPro.TMP_Text text = GameObject.FindGameObjectWithTag("DebugText").GetComponent<TMPro.TMP_Text>();
+        if (anObject == null)
+        {
+            text.text = "Null";
+            return default;
+        }
+
+        text.text = $"{message}: {anObject}";
+
+        return anObject;
+#endif
+#pragma warning disable CS0162 // Unreachable code detected
+        return anObject;
+#pragma warning restore CS0162 // Unreachable code detected
+    }
+
     public static List<T> FindInterfaces<T>()
     {
         List<T> interfaces = new List<T>();

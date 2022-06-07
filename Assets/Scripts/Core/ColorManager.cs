@@ -13,12 +13,15 @@ public class ColorManager : MonoBehaviour
         ChangeColors();
     }
 
-#if UNITY_EDITOR
     private void OnValidate()
     {
-        //ChangeColors();    
+        ChangeColors();
     }
-#endif
+
+    private void Update()
+    {
+        ChangeColors();
+    }
 
     public void ChangeColors()
     {
@@ -34,8 +37,6 @@ public class ColorManager : MonoBehaviour
 
         Resources.Load<Material>("Materials/M_Secondary").SetColor("_BaseColor", colorLibrary.colors[index].secondaryColor);
         Resources.Load<Material>("Materials/M_Sprite").color = colorLibrary.colors[index].secondaryColor;
-
-        Camera.main.backgroundColor = colorLibrary.colors[index].backgroundColor;
 
         Resources.Load<Material>("Materials/M_GradientSkyBackground")
             .SetColor("_TopColor", colorLibrary.colors[index].gradient.colorKeys[0].color);

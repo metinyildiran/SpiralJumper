@@ -9,7 +9,6 @@ public class ColorLibrary : ScriptableObject
         public Color primaryColor;
         public Color secondaryColor;
         public Gradient gradient;
-        public Color backgroundColor;
         public Color cylinderColor;
         public Color ballColor;
     }

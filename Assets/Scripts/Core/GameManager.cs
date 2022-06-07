@@ -38,6 +38,11 @@ public class GameManager : TouchMove
         Application.targetFrameRate = 60;
     }
 
+    //private void Update()
+    //{
+    //    Utils.PrintScreen(((int)(1.0f / Time.deltaTime)).ToString(), "FPS");
+    //}
+
     protected override void Start()
     {
         base.Start();
@@ -215,6 +220,8 @@ public class GameManager : TouchMove
 
         var json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+
+        LoadData();
     }
     #endregion
 }

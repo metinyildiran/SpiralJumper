@@ -173,7 +173,7 @@ public class LevelCreator : EditorWindow
     {
         MainCylinder = GameObject.FindGameObjectWithTag("MainCylinder");
 
-        float startRotation = 15.0f;
+        float startRotation = 105.0f;
         for (int i = 0; i < 10; i++)
         {
             GameObject circle = Utils.SpawnPrefab(func.Invoke(), MainCylinder);

@@ -11,6 +11,7 @@
 /[Uu]ser[Ss]ettings/
 /Assets/Library/
 /Assets/Plugins/
+/WebGL Builds
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -72,3 +73,5 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+connectwebgl.zip
+webgl_sharing

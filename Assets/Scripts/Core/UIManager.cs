@@ -1,4 +1,3 @@
-using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,32 +5,49 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     private GameObject uiCanvas;
+    private GameObject InGameUI;
     private GameObject failedGameUI;
     private GameObject finishedGameUI;
     private TMP_Text scoreText;
+    private TMP_Text rewardText;
+    private TMP_Text dragToPlayText;
 
     private void Awake()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0) return;
 
         uiCanvas = GameObject.Find("UI");
+
+        InGameUI = uiCanvas.GetChild("InGameUI");
         failedGameUI = uiCanvas.GetChild("FailedGameUI");
         finishedGameUI = uiCanvas.GetChild("FinishedLevelUI");
         scoreText = uiCanvas.GetChild("ScoreText").GetComponent<TMP_Text>();
+        rewardText = uiCanvas.GetChild("RewardText").GetComponent<TMP_Text>();
 
-        scoreText.color = Resources.Load<Material>("Materials/M_Text").color;
+        dragToPlayText = InGameUI.GetChild("DragToPlayText").GetComponent<TMP_Text>();
+
+        scoreText.fontSharedMaterial.SetColor("_FaceColor", Resources.Load<Material>("Materials/M_Text").color);
+
+        rewardText.fontSharedMaterial.SetColor("_FaceColor", Resources.Load<Material>("Materials/M_Primary").color);
+        rewardText.fontSharedMaterial.SetColor("_OutlineColor", Resources.Load<Material>("Materials/M_Secondary").color);
+        rewardText.fontSharedMaterial.SetColor("_UnderlayColor", Resources.Load<Material>("Materials/M_Ball").color);
+
+        dragToPlayText.fontSharedMaterial.SetColor("_FaceColor", Resources.Load<Material>("Materials/M_Primary").color);
+        dragToPlayText.fontSharedMaterial.SetColor("_OutlineColor", Resources.Load<Material>("Materials/M_Secondary").color);
     }
 
     private void Start()
     {
         GameManager.Instance.OnGameFailed += ShowFailedGameUI;
         GameManager.Instance.OnGameFinished += ShowFinishedGameUI;
-        GameManager.Instance.OnScoreChanged += SetScoreText;
+        GameManager.Instance.OnSpecialChanged += ShowRewardText;
     }
 
     private void ShowFailedGameUI()
     {
         failedGameUI.SetActive(true);
+
+        rewardText.enabled = false;
     }
 
     private void ShowFinishedGameUI()
@@ -39,23 +55,18 @@ public class UIManager : MonoBehaviour
         finishedGameUI.SetActive(true);
     }
 
-    private void SetScoreText(int score)
+    private void ShowRewardText(bool value)
     {
-        scoreText.text = score.ToString();
-
-        DOPunch();
-    }
-
-    private void DOPunch()
-    {
-        scoreText.transform.DOKill();
-        scoreText.transform.DOPunchScale(new Vector3(0.3f, 0.3f, 0.3f), 0.1f);
+        if (value)
+        {
+            rewardText.gameObject.SetActive(false);
+            rewardText.gameObject.SetActive(true);
+        }
     }
 
     private void OnDestroy()
     {
         GameManager.Instance.OnGameFailed -= ShowFailedGameUI;
         GameManager.Instance.OnGameFinished -= ShowFinishedGameUI;
-        GameManager.Instance.OnScoreChanged -= SetScoreText;
     }
 }
