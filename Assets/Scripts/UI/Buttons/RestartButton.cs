@@ -1,6 +1,4 @@
-﻿using Core;
-
-public class RestartButton : ButtonBase
+﻿public class RestartButton : ButtonBase
 {
     protected override void OnPressed()
     {

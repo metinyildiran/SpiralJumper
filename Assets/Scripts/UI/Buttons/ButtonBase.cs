@@ -5,8 +5,6 @@ public abstract class ButtonBase : MonoBehaviour, IPointerUpHandler
 {
     public void OnPointerUp(PointerEventData eventData)
     {
-        AudioManager.Instance.PlayButtonClick();
-
         OnPressed();
     }
 

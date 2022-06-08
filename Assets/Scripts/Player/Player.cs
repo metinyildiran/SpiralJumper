@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.OnSpecialChanged += OnSpecialChanged;
         GameManager.Instance.OnGameFailed += DOScaleDownBall;
+        GameManager.Instance.OnGameFinished += DOScaleDownBall;
     }
 
     private void Update()
@@ -176,5 +177,12 @@ public class Player : MonoBehaviour
     private void SetIsCollidedFalse()
     {
         isCollided = false;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnSpecialChanged -= OnSpecialChanged;
+        GameManager.Instance.OnGameFailed -= DOScaleDownBall;
+        GameManager.Instance.OnGameFinished -= DOScaleDownBall;
     }
 }

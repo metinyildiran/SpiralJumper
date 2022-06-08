@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class RewardText : TextBase
 {
-    private readonly string[] rewards = { "AWESOME", "AMAZING", "BREATHTAKING",
-        "MAGNIFICENT", "ASTONISHING", "INSPIRING" , "STUNNING", "MIRACULOUS", "SPECTACULAR", "SUBLIME" };
+    private readonly string[] rewards = { "AWESOME!", "AMAZING!", "BREATHTAKING!",
+        "MAGNIFICENT!", "ASTONISHING!", "INSPIRING!" , "STUNNING!", "MIRACULOUS!", "SPECTACULAR!", "SUBLIME!" };
 
     private int enableCount;
 
@@ -29,7 +29,7 @@ public class RewardText : TextBase
 
     private IEnumerator HideRewardText()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.2f);
 
         gameObject.transform.DOScale(0.0f, 0.2f).onComplete += _HideRewardText;
     }
@@ -44,6 +44,6 @@ public class RewardText : TextBase
 
     protected override void SetText(TMP_Text tmp_text)
     {
-        tmp_text.text = rewards[Random.Range(0, rewards.Length - 1)];
+        tmp_text.text = rewards[Random.Range(0, rewards.Length)];
     }
 }

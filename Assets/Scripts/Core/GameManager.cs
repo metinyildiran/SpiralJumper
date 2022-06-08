@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.IO;
-using Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.InputSystem.InputAction;

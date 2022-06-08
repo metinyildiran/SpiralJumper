@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
+[ExecuteInEditMode]
 public class LevelCreator : EditorWindow
 {
     private RenderSettingsWrapperObject _renderSettings;
@@ -111,6 +112,8 @@ public class LevelCreator : EditorWindow
 
             EditorSceneManager.SaveScene(newScene, $"Assets/Resources/Scenes/Level {sceneCount}.unity");
         }
+
+        Resources.UnloadUnusedAssets();
     }
 
     private int GetSceneCount()

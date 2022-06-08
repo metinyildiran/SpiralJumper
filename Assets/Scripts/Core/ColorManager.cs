@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 #endif
 public class ColorManager : MonoBehaviour
 {
@@ -13,15 +13,15 @@ public class ColorManager : MonoBehaviour
         ChangeColors();
     }
 
-    private void OnValidate()
-    {
-        ChangeColors();
-    }
+    //private void OnValidate()
+    //{
+    //    ChangeColors();
+    //}
 
-    private void Update()
-    {
-        ChangeColors();
-    }
+    //private void Update()
+    //{
+    //    ChangeColors();
+    //}
 
     public void ChangeColors()
     {
@@ -51,5 +51,7 @@ public class ColorManager : MonoBehaviour
         Resources.Load<Material>("Materials/M_Special").SetColor("_BaseColor", colorLibrary.colors[index].ballColor);
         Resources.Load<Material>("Materials/M_Particle").SetColor("_BaseColor", colorLibrary.colors[index].ballColor);
         Resources.Load<Material>("Materials/M_Trail").SetColor("_BaseColor", colorLibrary.colors[index].ballColor);
+
+        Resources.UnloadUnusedAssets();
     }
 }

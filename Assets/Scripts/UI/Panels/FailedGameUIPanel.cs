@@ -1,4 +1,3 @@
-using Core;
 using UnityEngine.InputSystem;
 
 public class FailedGameUIPanel : TouchPress

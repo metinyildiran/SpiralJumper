@@ -10,7 +10,7 @@ public class Splash : MonoBehaviour
 
     private IEnumerator Destroy()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(2.0f);
 
         Destroy(gameObject);
     }

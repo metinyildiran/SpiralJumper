@@ -39,6 +39,8 @@ public class UIManager : MonoBehaviour
 
         dragToPlayText.fontSharedMaterial.SetColor("_FaceColor", Resources.Load<Material>("Materials/M_Primary").color);
         dragToPlayText.fontSharedMaterial.SetColor("_OutlineColor", Resources.Load<Material>("Materials/M_Secondary").color);
+
+        Resources.UnloadUnusedAssets();
     }
 
     private void Start()

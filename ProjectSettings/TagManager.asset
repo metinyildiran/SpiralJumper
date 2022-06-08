@@ -10,7 +10,6 @@ TagManager:
   - Circle
   - SpecialParticle
   - SingleCircle
-  - DebugText
   layers:
   - Default
   - TransparentFX

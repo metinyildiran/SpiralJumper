@@ -1,5 +1,4 @@
-﻿using Core;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
 public class FinishedLevelUIPanel : TouchPress
 {
