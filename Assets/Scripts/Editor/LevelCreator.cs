@@ -1,20 +1,23 @@
-#if UNITY_EDITOR
 using System;
+#if UNITY_EDITOR
 using UnityEditor;
-#endif
 using UnityEditor.SceneManagement;
-using UnityEngine;
+#endif
 using UnityEngine.SceneManagement;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using System.Collections.Generic;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Collections;
+using Unity.EditorCoroutines.Editor;
 
 #if UNITY_EDITOR
 [ExecuteInEditMode]
 public class LevelCreator : EditorWindow
 {
-    private RenderSettingsWrapperObject _renderSettings;
-
-    private GameObject[] circleReferences;
+    private readonly List<GameObject> circleReferences = new List<GameObject>();
     private float circleY;
-    GameObject MainCylinder;
+    private GameObject MainCylinder;
     private int levelCount;
 
     [MenuItem("Tools/Qubits/Level Creator")]
@@ -23,10 +26,13 @@ public class LevelCreator : EditorWindow
         GetWindow<LevelCreator>("Level Creator");
     }
 
-    private void OnValidate()
+    private void OnFocus()
     {
-        circleReferences = Resources.LoadAll<GameObject>("Prefabs/Circles/UsableCircles");
-        _renderSettings = Resources.Load<RenderSettingsWrapperObject>("Render Settings");
+        circleReferences.Clear();
+        Addressables.LoadAssetsAsync<GameObject>("Circle", circle =>
+        {
+            circleReferences.Add(circle);
+        });
 
         circleY = 52.0f;
         levelCount = 1;
@@ -35,28 +41,17 @@ public class LevelCreator : EditorWindow
     private void OnGUI()
     {
         #region Level Creator
-        levelCount = Slider("Level Count", levelCount, 1000);
+        levelCount = Slider("Level Count", levelCount, 100);
 
         if (GUILayout.Button($"Create {levelCount} Levels"))
         {
-            CreateScene(levelCount);
+            EditorCoroutineUtility.StartCoroutine(CreateScene(), this);
         }
 
         #endregion
 
         #region Ping MainCylinder
-        if (Selection.activeGameObject == null)
-        {
-            CenteredLabel("Select the MainCylinder to work with it");
-
-            //EditorGUIUtility.PingObject(GameObject.FindGameObjectWithTag("MainCylinder"));
-
-            return;
-        }
-
-        MainCylinder = Selection.activeGameObject.CompareTag("MainCylinder") ? Selection.activeGameObject : null;
-
-        if (MainCylinder == null)
+        if (Selection.activeGameObject != GameObject.FindGameObjectWithTag("MainCylinder"))
         {
             CenteredLabel("Select the MainCylinder to work with it");
 
@@ -84,20 +79,20 @@ public class LevelCreator : EditorWindow
         #endregion
     }
 
-    private void CreateScene(int count = 1)
+    private IEnumerator CreateScene()
     {
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < levelCount; i++)
         {
             Scene newScene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
             SetRenderSettings();
 
-            foreach (GameObject o in Resources.LoadAll<GameObject>("Prefabs/Essentials"))
+            AsyncOperationHandle<IList<GameObject>> essentials = Addressables.LoadAssetsAsync<GameObject>("Essentials", o =>
             {
                 Utils.SpawnPrefab(o);
-            }
+            });
 
-            Selection.activeGameObject = GameObject.FindGameObjectWithTag("MainCylinder");
+            yield return essentials;
 
             int sceneCount = GetSceneCount();
 
@@ -110,22 +105,18 @@ public class LevelCreator : EditorWindow
                 SpawnCircles();
             }
 
-            EditorSceneManager.SaveScene(newScene, $"Assets/Resources/Scenes/Level {sceneCount}.unity");
+            EditorSceneManager.SaveScene(newScene, $"Assets/Scenes/Level {sceneCount}.unity");
         }
-
-        Resources.UnloadUnusedAssets();
     }
 
     private int GetSceneCount()
     {
-        System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo("Assets/Resources/Scenes/");
+        System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo("Assets/Scenes/");
         return dir.GetFiles().Length / 2;
     }
 
     private void SpawnCircles()
     {
-        MainCylinder = GameObject.FindGameObjectWithTag("MainCylinder");
-
         if (GameObject.FindGameObjectWithTag("Circle"))
         {
             ClearMainCylinder();
@@ -138,8 +129,6 @@ public class LevelCreator : EditorWindow
 
     private void SpawnTwistyCircles()
     {
-        MainCylinder = GameObject.FindGameObjectWithTag("MainCylinder");
-
         if (GameObject.FindGameObjectWithTag("Circle"))
         {
             ClearMainCylinder();
@@ -152,16 +141,15 @@ public class LevelCreator : EditorWindow
 
     private GameObject GetSingleCicle()
     {
-        return Resources.Load<GameObject>("Prefabs/Circles/SingleCircle");
+        AsyncOperationHandle<GameObject> o = Addressables.LoadAssetAsync<GameObject>("SingleCircle");
+        return o.Result;
     }
 
     private void FillCylinder(Func<GameObject> func)
     {
-        MainCylinder = GameObject.FindGameObjectWithTag("MainCylinder");
-
         for (int i = 0; i < 10; i++)
         {
-            GameObject circle = Utils.SpawnPrefab(func.Invoke(), MainCylinder);
+            GameObject circle = Utils.SpawnPrefab(func.Invoke(), GameObject.FindGameObjectWithTag("MainCylinder"));
             circle.transform.SetPositionAndRotation(new Vector3(0, circleY), Quaternion.Euler(new Vector3(0, UnityEngine.Random.Range(1, 9) * 45)));
 
             circleY -= 4;
@@ -174,12 +162,10 @@ public class LevelCreator : EditorWindow
 
     private void FillCylinderWithSingleCircle(Func<GameObject> func)
     {
-        MainCylinder = GameObject.FindGameObjectWithTag("MainCylinder");
-
         float startRotation = 105.0f;
         for (int i = 0; i < 10; i++)
         {
-            GameObject circle = Utils.SpawnPrefab(func.Invoke(), MainCylinder);
+            GameObject circle = Utils.SpawnPrefab(func.Invoke(), GameObject.FindGameObjectWithTag("MainCylinder"));
             circle.transform.SetPositionAndRotation(new Vector3(0, circleY), Quaternion.Euler(new Vector3(0, startRotation)));
 
             startRotation += 15;
@@ -218,7 +204,7 @@ public class LevelCreator : EditorWindow
 
     private GameObject GetRandomCircle()
     {
-        return circleReferences[UnityEngine.Random.Range(0, circleReferences.Length)];
+        return circleReferences[UnityEngine.Random.Range(0, circleReferences.Count)];
     }
 
     private int Slider(string label, int scale, int maxValue = 20)

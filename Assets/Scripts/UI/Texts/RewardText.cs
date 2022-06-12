@@ -6,7 +6,7 @@ using UnityEngine;
 public class RewardText : TextBase
 {
     private readonly string[] rewards = { "AWESOME!", "AMAZING!", "BREATHTAKING!",
-        "MAGNIFICENT!", "ASTONISHING!", "INSPIRING!" , "STUNNING!", "MIRACULOUS!", "SPECTACULAR!", "SUBLIME!" };
+        "MAGNIFICENT!", "ASTONISHING!", "INSPIRING!" , "STUNNING!", "MIRACULOUS!", "SPECTACULAR!" };
 
     private int enableCount;
 

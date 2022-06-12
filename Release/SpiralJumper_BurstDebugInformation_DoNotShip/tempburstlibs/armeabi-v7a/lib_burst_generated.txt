@@ -138,6 +138,7 @@ Library: lib_burst_generated
 --compilation-defines=USING_PHYSICS2D_MODULE
 --compilation-defines=UNIVERSAL_1_0_0_OR_NEWER
 --compilation-defines=TIMELINE_FRAMEACCURATE
+--compilation-defines=ENABLE_ASYNC_ASSETBUNDLE_UWR
 --generate-link-xml=Temp\burst.link.xml
 --debug=Full
 --output=D:\Unity Projects\SpiralJumper\Temp\StagingArea\tempburstlibs\armeabi-v7a\lib_burst_generated
@@ -151,12 +152,15 @@ Library: lib_burst_generated
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.Internal.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
+--root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Addressables.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
+--root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.ResourceManager.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.RenderPipeline.Universal.ShaderLibrary.dll
+--root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Services.Core.Internal.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Services.Core.Analytics.dll
---root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
+--root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.ScriptableBuildPipeline.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Services.Core.Scheduler.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Services.Core.Registration.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Services.Core.Device.dll

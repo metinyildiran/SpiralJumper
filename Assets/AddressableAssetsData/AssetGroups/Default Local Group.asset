@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: e4b2006f2c846db42961d5f2f0951100
+  m_SerializeEntries:
+  - m_GUID: 5390e52104ac0fe47a910de04c6780b3
+    m_Address: UsableCircles
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Circle
+  - m_GUID: 3aff8e3947ca6ec49b4273afc9b14f02
+    m_Address: Essentials
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Essentials
+  - m_GUID: 6ba0daa6fc26d554eb3083bde684c579
+    m_Address: SingleCircle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bc0a09058a8b3fc49a701d61f3f24c9b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f0f6f66576d0db640b012cd9e750ba06, type: 2}
+    - {fileID: 11400000, guid: 1335dc62d25934745aa7e4ed2907610e, type: 2}

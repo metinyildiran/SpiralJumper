@@ -12,6 +12,10 @@ public class UIManager : MonoBehaviour
     private TMP_Text rewardText;
     private TMP_Text dragToPlayText;
 
+    readonly int FaceColor = Shader.PropertyToID("_FaceColor");
+    readonly int OutlineColor = Shader.PropertyToID("_OutlineColor");
+    readonly int UnderlayColor = Shader.PropertyToID("_UnderlayColor");
+
     private void OnGUI()
     {
         ((int)(1.0f / Time.smoothDeltaTime)).PrintScreen("FPS");
@@ -31,14 +35,14 @@ public class UIManager : MonoBehaviour
 
         dragToPlayText = InGameUI.GetChild("DragToPlayText").GetComponent<TMP_Text>();
 
-        scoreText.fontSharedMaterial.SetColor("_FaceColor", Resources.Load<Material>("Materials/M_Text").color);
+        scoreText.fontSharedMaterial.SetColor(FaceColor, Resources.Load<Material>("Materials/M_Text").GetColor(FaceColor));
 
-        rewardText.fontSharedMaterial.SetColor("_FaceColor", Resources.Load<Material>("Materials/M_Primary").color);
-        rewardText.fontSharedMaterial.SetColor("_OutlineColor", Resources.Load<Material>("Materials/M_Secondary").color);
-        rewardText.fontSharedMaterial.SetColor("_UnderlayColor", Resources.Load<Material>("Materials/M_Ball").color);
+        rewardText.fontSharedMaterial.SetColor(FaceColor, Resources.Load<Material>("Materials/M_Primary").color);
+        rewardText.fontSharedMaterial.SetColor(OutlineColor, Resources.Load<Material>("Materials/M_Secondary").color);
+        rewardText.fontSharedMaterial.SetColor(UnderlayColor, Resources.Load<Material>("Materials/M_Ball").color);
 
-        dragToPlayText.fontSharedMaterial.SetColor("_FaceColor", Resources.Load<Material>("Materials/M_Primary").color);
-        dragToPlayText.fontSharedMaterial.SetColor("_OutlineColor", Resources.Load<Material>("Materials/M_Secondary").color);
+        dragToPlayText.fontSharedMaterial.SetColor(FaceColor, Resources.Load<Material>("Materials/M_Primary").color);
+        dragToPlayText.fontSharedMaterial.SetColor(OutlineColor, Resources.Load<Material>("Materials/M_Secondary").color);
 
         Resources.UnloadUnusedAssets();
     }

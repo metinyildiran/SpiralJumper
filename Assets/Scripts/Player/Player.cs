@@ -5,9 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody _rb;
-    private GameObject splashParticle;
-    private ParticleSystem specialParticle;
-    private GameObject splashObject;
     private BoxCollider _boxCollider;
 
     private const float jumpForce = 350.0f;
@@ -20,15 +17,10 @@ public class Player : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _boxCollider = GetComponent<BoxCollider>();
-
-        splashParticle = Resources.Load<GameObject>("Prefabs/SplashParticle");
-        specialParticle = GameObject.FindGameObjectWithTag("SpecialParticle").GetComponent<ParticleSystem>();
-        splashObject = Resources.Load<GameObject>("Prefabs/Splash");
     }
 
     private void Start()
     {
-        GameManager.Instance.OnSpecialChanged += OnSpecialChanged;
         GameManager.Instance.OnGameFailed += DOScaleDownBall;
         GameManager.Instance.OnGameFinished += DOScaleDownBall;
     }
@@ -61,7 +53,7 @@ public class Player : MonoBehaviour
         Debug.DrawRay(position, direction, Color.red);
 
         Ray ray = new Ray(position, direction);
-        if (Physics.Raycast(ray, out var hit, LayerMask.GetMask("CirclePiece")))
+        if (Physics.Raycast(ray, LayerMask.GetMask("CirclePiece")))
         {
             GameManager.Instance.SetCanFollow(true);
         }
@@ -77,8 +69,6 @@ public class Player : MonoBehaviour
         if (GameManager.Instance.GetIsSpecialActive())
         {
             Jump();
-
-            SpawnSplashObject(collision);
 
             collision.gameObject.GetComponent<CirclePieceBase>().DestroyParent();
 
@@ -98,8 +88,6 @@ public class Player : MonoBehaviour
         {
             GameManager.Instance.SetCanFollow(false);
 
-            SpawnSplashObject(collision);
-
             DOBounce(transform);
         }
 
@@ -113,24 +101,6 @@ public class Player : MonoBehaviour
         transform.DOScale(Vector3.zero, 1f);
     }
 
-    private void SpawnSplashObject(Collision collision)
-    {
-        if (!transform) return;
-
-        SpawnSplashParticle();
-
-        GameObject splash = Instantiate(splashObject);
-
-        splash.transform.position = transform.position + new Vector3(0, 0.05f);
-        splash.transform.DORotate(new Vector3(0, Random.Range(0, 360)), 0.0f);
-        splash.transform.parent = collision.transform.parent;
-    }
-
-    private void SpawnSplashParticle()
-    {
-        Instantiate(splashParticle, transform.position, Quaternion.Euler(new Vector3(-90, 0)));
-    }
-
     private void DOBounce(Transform transform)
     {
         if (!transform) return;
@@ -140,18 +110,6 @@ public class Player : MonoBehaviour
             .Append(transform.DOScaleZ(0.6f, 0.1f))
             .Append(transform.DOScaleZ(1f, 0.1f))
             .Append(transform.DOShakeScale(0.1f, strength: 0.2f, vibrato: 1, randomness: 0));
-    }
-
-    private void OnSpecialChanged(bool isActive)
-    {
-        if (isActive)
-        {
-            specialParticle.Play();
-        }
-        else
-        {
-            specialParticle.Stop();
-        }
     }
 
     private void Jump()
@@ -181,7 +139,6 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.OnSpecialChanged -= OnSpecialChanged;
         GameManager.Instance.OnGameFailed -= DOScaleDownBall;
         GameManager.Instance.OnGameFinished -= DOScaleDownBall;
     }

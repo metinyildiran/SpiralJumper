@@ -2,11 +2,17 @@
 using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
-//[ExecuteInEditMode]
+[ExecuteInEditMode]
 #endif
 public class ColorManager : MonoBehaviour
 {
     private ColorLibrary colorLibrary;
+
+    readonly int Color = Shader.PropertyToID("_Color");
+    readonly int FaceColor = Shader.PropertyToID("_FaceColor");
+    readonly int BaseColor = Shader.PropertyToID("_BaseColor");
+    readonly int TopColor = Shader.PropertyToID("_TopColor");
+    readonly int BottomColor = Shader.PropertyToID("_BottomColor");
 
     private void Awake()
     {
@@ -32,26 +38,24 @@ public class ColorManager : MonoBehaviour
         // switch colors every 10 levels
         int index = (SceneManager.GetActiveScene().buildIndex / 10) % colorLibrary.colors.Length;
 
-        Resources.Load<Material>("Materials/M_Primary").SetColor("_BaseColor", colorLibrary.colors[index].primaryColor);
-        Resources.Load<Material>("Materials/M_Text").color = colorLibrary.colors[index].secondaryColor;
-
-        Resources.Load<Material>("Materials/M_Secondary").SetColor("_BaseColor", colorLibrary.colors[index].secondaryColor);
-        Resources.Load<Material>("Materials/M_Sprite").color = colorLibrary.colors[index].secondaryColor;
-
-        Resources.Load<Material>("Materials/M_GradientSkyBackground")
-            .SetColor("_TopColor", colorLibrary.colors[index].gradient.colorKeys[0].color);
-
-        Resources.Load<Material>("Materials/M_GradientSkyBackground")
-            .SetColor("_BottomColor", colorLibrary.colors[index].gradient.colorKeys[1].color);
-
-        Resources.Load<Material>("Materials/M_Cylinder").SetColor("_BaseColor", colorLibrary.colors[index].cylinderColor);
-
-        Resources.Load<Material>("Materials/M_Ball").SetColor("_BaseColor", colorLibrary.colors[index].ballColor);
-        Resources.Load<Material>("Materials/M_Splash").SetColor("_BaseColor", colorLibrary.colors[index].ballColor);
-        Resources.Load<Material>("Materials/M_Special").SetColor("_BaseColor", colorLibrary.colors[index].ballColor);
-        Resources.Load<Material>("Materials/M_Particle").SetColor("_BaseColor", colorLibrary.colors[index].ballColor);
-        Resources.Load<Material>("Materials/M_Trail").SetColor("_BaseColor", colorLibrary.colors[index].ballColor);
+        SetMaterialColor("M_Primary", BaseColor, colorLibrary.colors[index].primaryColor);
+        SetMaterialColor("M_Text", FaceColor, colorLibrary.colors[index].secondaryColor);
+        SetMaterialColor("M_Secondary", BaseColor, colorLibrary.colors[index].secondaryColor);
+        SetMaterialColor("M_Sprite", Color, colorLibrary.colors[index].secondaryColor);
+        SetMaterialColor("M_GradientSkyBackground", TopColor, colorLibrary.colors[index].gradient.colorKeys[0].color);
+        SetMaterialColor("M_GradientSkyBackground", BottomColor, colorLibrary.colors[index].gradient.colorKeys[1].color);
+        SetMaterialColor("M_Cylinder", BaseColor, colorLibrary.colors[index].cylinderColor);
+        SetMaterialColor("M_Ball", BaseColor, colorLibrary.colors[index].ballColor);
+        SetMaterialColor("M_Splash", BaseColor, colorLibrary.colors[index].ballColor);
+        SetMaterialColor("M_Special", BaseColor, colorLibrary.colors[index].ballColor);
+        SetMaterialColor("M_Particle", BaseColor, colorLibrary.colors[index].ballColor);
+        SetMaterialColor("M_Trail", BaseColor, colorLibrary.colors[index].ballColor);
 
         Resources.UnloadUnusedAssets();
+    }
+
+    private void SetMaterialColor(string matName, int nameID, Color color)
+    {
+        Resources.Load<Material>($"Materials/{matName}").SetColor(nameID, color);
     }
 }
