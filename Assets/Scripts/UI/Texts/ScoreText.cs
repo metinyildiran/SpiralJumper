@@ -1,18 +1,8 @@
 ﻿using DG.Tweening;
-using TMPro;
 using UnityEngine;
 
 public class ScoreText : TextBase
 {
-    private TMP_Text text;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        text = GetComponent<TMP_Text>();
-    }
-
     private void Start()
     {
         GameManager.Instance.OnScoreChanged += SetScoreText;

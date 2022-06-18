@@ -2,14 +2,15 @@
 
 public class ParticleSpawner : MonoBehaviour
 {
-    public GameObject splashParticle;
+    private GameObject splashParticle;
+    private GameObject splashObject;
     private ParticleSystem specialParticle;
-    public GameObject splashObject;
 
     private void Awake()
     {
         splashParticle = Resources.Load<GameObject>("Prefabs/SplashParticle");
         splashObject = Resources.Load<GameObject>("Prefabs/SplashObject");
+
         specialParticle = GameObject.FindGameObjectWithTag("SpecialParticle").GetComponent<ParticleSystem>();
     }
 
@@ -47,12 +48,12 @@ public class ParticleSpawner : MonoBehaviour
 
         SpawnSplashParticle();
 
-        GameObject.Instantiate(splashObject, transform.position + new Vector3(0, 0.05f), Quaternion.Euler(0, Random.Range(0, 360), 0), collision.transform.parent);
+        Instantiate(splashObject, transform.position + new Vector3(0, 0.05f), Quaternion.Euler(0, Random.Range(0, 360), 0), collision.transform.parent);
     }
 
     private void SpawnSplashParticle()
     {
-        GameObject.Instantiate(splashParticle, transform.position, Quaternion.Euler(new Vector3(-90, 0)));
+        Instantiate(splashParticle, transform.position, Quaternion.Euler(new Vector3(-90, 0)));
     }
 
     private void OnDestroy()
