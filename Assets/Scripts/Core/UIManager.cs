@@ -12,10 +12,6 @@ public class UIManager : MonoBehaviour
     private TMP_Text rewardText;
     private TMP_Text dragToPlayText;
 
-    readonly int FaceColor = Shader.PropertyToID("_FaceColor");
-    readonly int OutlineColor = Shader.PropertyToID("_OutlineColor");
-    readonly int UnderlayColor = Shader.PropertyToID("_UnderlayColor");
-
     private void OnGUI()
     {
         ((int)(1.0f / Time.smoothDeltaTime)).PrintScreen("FPS");
@@ -35,14 +31,21 @@ public class UIManager : MonoBehaviour
 
         dragToPlayText = InGameUI.GetChild("DragToPlayText").GetComponent<TMP_Text>();
 
-        scoreText.fontSharedMaterial.SetColor(FaceColor, Resources.Load<Material>("Materials/M_Text").GetColor(FaceColor));
+        SetTextColors();
+    }
 
-        rewardText.fontSharedMaterial.SetColor(FaceColor, Resources.Load<Material>("Materials/M_Primary").color);
-        rewardText.fontSharedMaterial.SetColor(OutlineColor, Resources.Load<Material>("Materials/M_Secondary").color);
-        rewardText.fontSharedMaterial.SetColor(UnderlayColor, Resources.Load<Material>("Materials/M_Ball").color);
+    private void SetTextColors()
+    {
+        ColorLibrary colorLibrary = Resources.Load<ColorLibrary>("Settings/Color Library");
 
-        dragToPlayText.fontSharedMaterial.SetColor(FaceColor, Resources.Load<Material>("Materials/M_Primary").color);
-        dragToPlayText.fontSharedMaterial.SetColor(OutlineColor, Resources.Load<Material>("Materials/M_Secondary").color);
+        scoreText.fontSharedMaterial.SetColor(ShaderID.FaceColor, colorLibrary.currentColor.secondaryColor);
+
+        rewardText.fontSharedMaterial.SetColor(ShaderID.FaceColor, colorLibrary.currentColor.primaryColor);
+        rewardText.fontSharedMaterial.SetColor(ShaderID.OutlineColor, colorLibrary.currentColor.secondaryColor);
+        rewardText.fontSharedMaterial.SetColor(ShaderID.UnderlayColor, colorLibrary.currentColor.ballColor);
+
+        dragToPlayText.fontSharedMaterial.SetColor(ShaderID.FaceColor, colorLibrary.currentColor.primaryColor);
+        dragToPlayText.fontSharedMaterial.SetColor(ShaderID.OutlineColor, colorLibrary.currentColor.secondaryColor);
 
         Resources.UnloadUnusedAssets();
     }

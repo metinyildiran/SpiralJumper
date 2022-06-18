@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class CirclePieceBase : MonoBehaviour
+public class CirclePieceBase : MonoBehaviour
 {
     public void DestroyParent()
     {
@@ -9,5 +9,8 @@ public abstract class CirclePieceBase : MonoBehaviour
         Destroy(transform.parent.gameObject);
     }
 
-    protected abstract void OnCollisionEnter(Collision collision);
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+
+    }
 }

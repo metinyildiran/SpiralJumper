@@ -30,9 +30,9 @@ public class GameManager : TouchMove
     {
         base.Awake();
 
-        LoadData();
-
         Instance = this;
+
+        LoadData();
 
         Application.targetFrameRate = 60;
     }
@@ -76,18 +76,11 @@ public class GameManager : TouchMove
         OnGameFinished?.Invoke();
     }
 
-    public void AddScore(int score = 10)
+    public void AddScore(int amount = 10)
     {
         if (isGameFailed) return;
 
-        if (isSpecialActive)
-        {
-            _score += score * 3;
-        }
-        else
-        {
-            _score += score;
-        }
+        _score += isSpecialActive ? amount * 3 : amount;
 
         OnScoreChanged?.Invoke(_score);
     }
@@ -172,30 +165,30 @@ public class GameManager : TouchMove
     #region Saving and Loading
 
     [Serializable]
-    public class Data
+    private class Data
     {
         public int lastFinishedLevel;
     }
 
     private void SaveData()
     {
-        var data = new Data
+        Data data = new Data
         {
             lastFinishedLevel = SceneManager.GetActiveScene().buildIndex
         };
 
-        var json = JsonUtility.ToJson(data);
+        string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
 
     private void LoadData()
     {
-        var path = Application.persistentDataPath + "/savefile.json";
+        string path = Application.persistentDataPath + "/savefile.json";
 
         if (File.Exists(path))
         {
-            var json = File.ReadAllText(path);
-            var data = JsonUtility.FromJson<Data>(json);
+            string json = File.ReadAllText(path);
+            Data data = JsonUtility.FromJson<Data>(json);
 
             LastFinishedLevel = data.lastFinishedLevel;
         }
@@ -207,12 +200,12 @@ public class GameManager : TouchMove
 
     public void ResetData()
     {
-        var data = new Data
+        Data data = new Data
         {
             lastFinishedLevel = 0
         };
 
-        var json = JsonUtility.ToJson(data);
+        string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
 
         LoadData();

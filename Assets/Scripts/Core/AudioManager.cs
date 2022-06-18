@@ -1,14 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
+    public bool IsMuted { get; private set; }
+
     private AudioSource audioSource;
     private AudioClip jumpClip;
     private AudioClip passClip;
-
-    private bool isMuted;
 
     private void Awake()
     {
@@ -19,26 +20,24 @@ public class AudioManager : MonoBehaviour
         jumpClip = Resources.Load<AudioClip>("Sounds/BallJumpingSound");
         passClip = Resources.Load<AudioClip>("Sounds/PassSound");
 
-        if (PlayerPrefs.GetInt(nameof(isMuted), 0) == 0)
-        {
-            isMuted = false;
-        }
-        else
-        {
-            isMuted = true;
-        }
+        LoadSettings();
+    }
+
+    private void LoadSettings()
+    {
+        IsMuted = PlayerPrefs.GetInt(nameof(IsMuted), 0) != 0;
     }
 
     public void PlayJumpingSound()
     {
-        if (isMuted) return;
+        if (IsMuted) return;
 
         audioSource.PlayRandomly(jumpClip);
     }
 
     public void PlayPassSound()
     {
-        if (isMuted) return;
+        if (IsMuted) return;
 
         audioSource.pitch += 0.1f;
         audioSource.PlayOneShot(passClip);
@@ -46,17 +45,10 @@ public class AudioManager : MonoBehaviour
 
     public bool ToggleMute()
     {
-        if (isMuted)
-        {
-            isMuted = false;
-            PlayerPrefs.SetInt(nameof(isMuted), 0);
-        }
-        else
-        {
-            isMuted = true;
-            PlayerPrefs.SetInt(nameof(isMuted), 1);
-        }
+        IsMuted = !IsMuted;
 
-        return isMuted;
+        PlayerPrefs.SetInt(nameof(IsMuted), Convert.ToInt32(IsMuted));
+
+        return IsMuted;
     }
 }

@@ -1,13 +1,8 @@
-using UnityEngine;
-
 public class MiddleCircle : CircleBase
 {
-    protected override void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter()
     {
-        if (!GameManager.Instance.GetIsGameFailed())
-        {
-            GameManager.Instance.OnCirclePassed();
-            AudioManager.Instance.PlayPassSound();
-        }
+        GameManager.Instance.OnCirclePassed();
+        AudioManager.Instance.PlayPassSound();
     }
 }

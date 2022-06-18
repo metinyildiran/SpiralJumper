@@ -12,6 +12,11 @@ public class RewardText : TextBase
 
     private void OnEnable()
     {
+        SetRandomText();
+    }
+
+    private void SetRandomText()
+    {
         if (enableCount % 3 == 0)
         {
             SetText(GetComponent<TMP_Text>());

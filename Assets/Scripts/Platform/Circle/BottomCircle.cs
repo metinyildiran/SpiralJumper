@@ -1,12 +1,7 @@
-﻿using UnityEngine;
-
-public class BottomCircle : CircleBase
+﻿public class BottomCircle : CircleBase
 {
-    protected override void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter()
     {
-        if (!GameManager.Instance.GetIsGameFailed())
-        {
-            GameManager.Instance.GameFinished();
-        }
+        GameManager.Instance.GameFinished();
     }
 }

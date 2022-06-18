@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class LevelBar : MonoBehaviour
 {
     private Image fillBarImage;
-    float fillAmount = -0.1f;
+    private float fillAmount = -0.1f;
 
     private void Awake()
     {

@@ -7,9 +7,8 @@ public class CylinderController : TouchMove
 
     protected override void OnTouchMoved(CallbackContext context)
     {
-        if (GameManager.Instance.GetCanRotateCylinder())
-        {
-            transform.Rotate(Vector3.up, -context.ReadValue<float>() * touchMovementSensitivity);
-        }
+        if (!GameManager.Instance.GetCanRotateCylinder()) return;
+
+        transform.Rotate(Vector3.up, -context.ReadValue<float>() * touchMovementSensitivity);
     }
 }

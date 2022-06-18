@@ -2,5 +2,14 @@ using UnityEngine;
 
 public abstract class CircleBase : MonoBehaviour
 {
-    protected abstract void OnTriggerEnter(Collider other);
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!GameManager.Instance.GetIsGameFailed())
+        {
+            OnTriggerEnter();
+        }
+    }
+
+    protected abstract void OnTriggerEnter();
 }

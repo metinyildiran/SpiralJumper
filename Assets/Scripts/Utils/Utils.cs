@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public static class Utils
 {
-
     public static T Print<T>(this T anObject) where T : notnull
     {
         if (anObject == null)
