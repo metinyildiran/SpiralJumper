@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7086152, g: 0.77868754, b: 0.58420146, a: 1}
+  m_IndirectSpecularColor: {r: 0.662932, g: 0.57239157, b: 0.6853122, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -676,6 +676,69 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63f1eae1d5e477d4b9cdd1281a1a1a39, type: 3}
+--- !u!1 &1139562432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1279208896, guid: 63f1eae1d5e477d4b9cdd1281a1a1a39, type: 3}
+  m_PrefabInstance: {fileID: 1139562431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1139562433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1279208898, guid: 63f1eae1d5e477d4b9cdd1281a1a1a39, type: 3}
+  m_PrefabInstance: {fileID: 1139562431}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139562432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1139562434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139562432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:82d4528363f64994495a9e1434a78fc6
+    m_TableEntryReference:
+      m_KeyId: 22310840320000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: variable
+      variable:
+        rid: 4722659040740507690
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1139562433}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds:
+    - rid: 4722659040740507690
+      type: {class: NestedVariablesGroup, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: {fileID: 11400000, guid: 9ad0f902106b1ad498dd7edcab0117bc, type: 2}
 --- !u!1001 &1216806064
 PrefabInstance:
   m_ObjectHideFlags: 0

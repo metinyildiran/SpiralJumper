@@ -17,7 +17,6 @@ public class PlayerCamera : MonoBehaviour
         if (GameManager.Instance.GetIsGameFailed() || !GameManager.Instance.GetCanFollow()) return;
 
         FollowPlayer();
-
     }
 
     private void SetPerspectiveSize()
