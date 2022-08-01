@@ -132,10 +132,6 @@ Library: lib_burst_generated
 --compilation-defines=USING_ANIMATION_MODULE
 --compilation-defines=USING_PHYSICS2D_MODULE
 --compilation-defines=UNIVERSAL_1_0_0_OR_NEWER
---compilation-defines=PACKAGE_UGUI
---compilation-defines=MODULE_AUDIO
---compilation-defines=PACKAGE_TMP
---compilation-defines=ENABLE_PROPERTY_VARIANTS
 --compilation-defines=TIMELINE_FRAMEACCURATE
 --compilation-defines=ENABLE_ASYNC_ASSETBUNDLE_UWR
 --generate-link-xml=Temp\burst.link.xml
@@ -147,7 +143,6 @@ Library: lib_burst_generated
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.InputSystem.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Universal.Runtime.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Postprocessing.Runtime.dll
---root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Localization.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.Internal.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
@@ -170,7 +165,6 @@ Library: lib_burst_generated
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\DOTween.Modules.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.ShaderLibrary.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.Services.Core.Configuration.dll
---root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.013.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Universal.Shaders.dll
 --root-assembly=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
 --assembly-folder=D:\Unity Projects\SpiralJumper\Temp\StagingArea\Data\Managed\

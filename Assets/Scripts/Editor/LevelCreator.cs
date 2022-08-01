@@ -17,7 +17,6 @@ public class LevelCreator : EditorWindow
 {
     private readonly List<GameObject> circleReferences = new List<GameObject>();
     private float circleY;
-    private GameObject MainCylinder;
     private int levelCount;
 
     [MenuItem("Tools/Qubits/Level Creator")]
@@ -211,7 +210,7 @@ public class LevelCreator : EditorWindow
     {
         GUILayout.BeginHorizontal();
         GUILayout.Label(label);
-        scale = (int)EditorGUILayout.Slider(scale, 1, maxValue);
+        scale = (int) EditorGUILayout.Slider(scale, 1, maxValue);
         GUILayout.EndHorizontal(); return scale;
     }
 

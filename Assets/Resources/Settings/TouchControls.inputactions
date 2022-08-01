@@ -26,6 +26,17 @@
                     "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5bb5858b-fd88-405d-a63f-21b8acd0e9b3",
+                    "path": "<Mouse>/delta/x",
+                    "interactions": "Hold(duration=0.01)",
+                    "processors": "Scale(factor=1.5)",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -48,6 +59,17 @@
                     "name": "",
                     "id": "12ebec1c-406f-410d-baac-dc94a0b6b821",
                     "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8198dcd1-91ef-4ab5-9e81-a2ded96dd58b",
+                    "path": "<Mouse>/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
