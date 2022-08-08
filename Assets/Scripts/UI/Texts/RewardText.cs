@@ -23,23 +23,22 @@ public class RewardText : TextBase
 
             StopAllCoroutines();
 
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(gameObject.transform.DOPunchScale(new Vector3(0.3f, 0.3f), 0.2f, 10, 0));
+            transform.DOPunchScale(new Vector3(0.3f, 0.3f), 0.2f, 10, 0);
         }
 
-        StartCoroutine(nameof(HideRewardText));
+        StartCoroutine(nameof(HideRewardTextRoutine));
 
         enableCount++;
     }
 
-    private IEnumerator HideRewardText()
+    private IEnumerator HideRewardTextRoutine()
     {
         yield return new WaitForSeconds(1.2f);
 
-        gameObject.transform.DOScale(0.0f, 0.2f).onComplete += _HideRewardText;
+        gameObject.transform.DOScale(0.0f, 0.2f).onComplete += HideRewardText;
     }
 
-    private void _HideRewardText()
+    private void HideRewardText()
     {
         gameObject.SetActive(false);
         gameObject.transform.DOScale(1, 0);

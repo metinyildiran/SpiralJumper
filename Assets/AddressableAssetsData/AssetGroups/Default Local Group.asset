@@ -31,6 +31,10 @@ MonoBehaviour:
     m_Address: SingleCircle
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 5d0cf8e9767496b4eb437a54b9885dbd
+    m_Address: EndlessCylinder
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bc0a09058a8b3fc49a701d61f3f24c9b, type: 2}
   m_SchemaSet:

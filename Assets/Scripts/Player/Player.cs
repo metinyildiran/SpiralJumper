@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         {
             Jump();
 
-            collision.gameObject.GetComponent<CirclePieceBase>().DestroyParent();
+            collision.gameObject.GetComponent<CirclePieceBase>()?.DestroyParent();
 
             StartCoroutine(GameManager.Instance.SetIsSpecialActive(false, 0.01f));
 

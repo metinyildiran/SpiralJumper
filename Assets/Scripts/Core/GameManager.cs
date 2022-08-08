@@ -17,7 +17,7 @@ public class GameManager : TouchMove
     private bool isSpecialActive = false;
 
     public int LastFinishedLevel { get; private set; }
-    private int _score;
+    public int Score { get; private set; }
     private int specialCount;
 
     public event Action OnGameStart;
@@ -80,9 +80,9 @@ public class GameManager : TouchMove
     {
         if (isGameFailed) return;
 
-        _score += isSpecialActive ? amount * 3 : amount;
+        Score += isSpecialActive ? amount * 3 : amount;
 
-        OnScoreChanged?.Invoke(_score);
+        OnScoreChanged?.Invoke(Score);
     }
 
     public void OnCirclePassed()
