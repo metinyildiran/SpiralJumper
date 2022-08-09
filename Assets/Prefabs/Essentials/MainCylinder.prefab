@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2794592324812318496}
   - component: {fileID: 84607008890180586}
   - component: {fileID: 3017058834393319297}
+  - component: {fileID: -775961253161311920}
   m_Layer: 0
   m_Name: MainCylinder
   m_TagString: MainCylinder
@@ -98,6 +99,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7d1f1edc064fc4c8f0ca8bf6e16320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-775961253161311920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885998687659225663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdbb9c1092eb1b4ba8add9f2144e288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3135902660539469556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105,6 +118,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1254174967675201669}
     m_Modifications:
+    - target: {fileID: 695838348875713803, guid: 6ba0daa6fc26d554eb3083bde684c579, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809219272039775158, guid: 6ba0daa6fc26d554eb3083bde684c579, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 56
+      objectReference: {fileID: 0}
     - target: {fileID: 202684752117347852, guid: ead736d0bb57b1e4ab65481898c6a7d9, type: 3}
       propertyPath: m_Name
       value: SingleCircle
@@ -152,14 +173,6 @@ PrefabInstance:
     - target: {fileID: 692362582906367158, guid: ead736d0bb57b1e4ab65481898c6a7d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 695838348875713803, guid: 6ba0daa6fc26d554eb3083bde684c579, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1809219272039775158, guid: 6ba0daa6fc26d554eb3083bde684c579, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ba0daa6fc26d554eb3083bde684c579, type: 3}

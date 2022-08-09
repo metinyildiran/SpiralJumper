@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 2794592324812318496}
   - component: {fileID: 84607008890180586}
   - component: {fileID: 3017058834393319297}
+  - component: {fileID: -7754990799102990639}
+  - component: {fileID: 53148161863699639}
   m_Layer: 0
   m_Name: EndlessCylinder
-  m_TagString: MainCylinder
+  m_TagString: EndlessCylinder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,3 +98,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7d1f1edc064fc4c8f0ca8bf6e16320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7754990799102990639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885998687659225663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f077c58cceb86459770eaa6fd01502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &53148161863699639
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885998687659225663}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7, y: 0.9556618, z: 7}
+  m_Center: {x: 0, y: 30, z: 0}

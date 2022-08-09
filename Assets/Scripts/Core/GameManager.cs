@@ -9,6 +9,8 @@ public class GameManager : TouchMove
 {
     public static GameManager Instance { get; private set; }
 
+    public bool GodMode;
+
     private bool canFollow = true;
     private bool canRotateCylinder = true;
     private bool isGameStarted = false;
@@ -34,6 +36,11 @@ public class GameManager : TouchMove
 
         LoadData();
 
+#if UNITY_STANDALONE
+        Screen.SetResolution(564, 960, false);
+        Screen.fullScreen = false;
+#endif
+
         Application.targetFrameRate = 60;
     }
 
@@ -58,6 +65,8 @@ public class GameManager : TouchMove
 
     public void SetGameFailed()
     {
+        if (GodMode) return;
+
         canRotateCylinder = false;
         canFollow = false;
         isGameFailed = true;

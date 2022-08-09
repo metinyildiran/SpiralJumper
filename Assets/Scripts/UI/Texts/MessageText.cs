@@ -19,7 +19,7 @@ public class MessageText : TextBase
 
     private IEnumerator HideMessageTextRoutine()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
 
         gameObject.transform.DOScale(0.0f, 0.2f).onComplete += HideMessageText;
     }

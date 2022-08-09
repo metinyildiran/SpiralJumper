@@ -23,16 +23,12 @@ public class Authenticator : MonoBehaviour
         {
             if (response.success)
             {
-                Debug.Log("successfully started LootLocker session");
-
                 PlayerPrefs.SetString("PlayerID", response.player_id.ToString().Print("Player ID"));
 
                 IsLoggedIn = true;
             }
             else
             {
-                Debug.Log("error starting LootLocker session");
-
                 IsLoggedIn = true;
             }
         });

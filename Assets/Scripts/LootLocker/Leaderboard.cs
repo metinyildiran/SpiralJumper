@@ -35,8 +35,6 @@ public class Leaderboard : MonoBehaviour
         {
             if (response.statusCode == 200)
             {
-                Debug.Log("FetchScore Successful");
-
                 playerNames.text = "";
                 playerScores.text = "";
 
@@ -66,8 +64,6 @@ public class Leaderboard : MonoBehaviour
             }
             else
             {
-                Debug.Log("FetchScore Failed: " + response.Error);
-
                 isDone = true;
             }
         });
@@ -82,14 +78,10 @@ public class Leaderboard : MonoBehaviour
         {
             if (response.statusCode == 200)
             {
-                Debug.Log("SubmitScore Successful");
-
                 isDone = true;
             }
             else
             {
-                Debug.Log("SubmitScore Failed: " + response.Error);
-
                 isDone = true;
             }
         });
@@ -122,8 +114,6 @@ public class Leaderboard : MonoBehaviour
             {
                 if (response.success)
                 {
-                    Debug.Log("SetPlayerName Successfull");
-
                     uiManager.ShowMessage("Successfully set!");
 
                     nicknameField.text = "";
@@ -132,8 +122,6 @@ public class Leaderboard : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("SetPlayerName Failed: " + response.Error);
-
                     uiManager.ShowMessage("Failed!");
 
                     isDone = true;

@@ -10,6 +10,8 @@ TagManager:
   - Circle
   - SpecialParticle
   - SingleCircle
+  - BottomCircle
+  - EndlessCylinder
   layers:
   - Default
   - TransparentFX
