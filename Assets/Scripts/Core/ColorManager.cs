@@ -7,18 +7,11 @@ public class ColorManager : MonoBehaviour
     public static ColorManager Instance { get; private set; }
     public ColorLibrary ColorLibrary { get; private set; }
 
-    private int endlessCylinderLevel = 1;
-    private int passedCylinderCount;
-
-    private TextBase[] textBases;
-
     private void Awake()
     {
         Instance = this;
 
         ChangeColors();
-
-        textBases = FindObjectsOfType<TextBase>();
     }
 
     private void ChangeColors()
@@ -35,30 +28,6 @@ public class ColorManager : MonoBehaviour
         ChangeTheme(index);
 
         Resources.UnloadUnusedAssets();
-    }
-
-    public void SwitchEndlessModeColors()
-    {
-        if (endlessCylinderLevel == ColorLibrary.colors.Length)
-        {
-            endlessCylinderLevel = 0;
-        }
-
-        if (passedCylinderCount % 3 == 0)
-        {
-            ColorLibrary.currentColor = ColorLibrary.colors[endlessCylinderLevel];
-
-            foreach (TextBase item in textBases)
-            {
-                item.SetTextColor(1.0f);
-            }
-
-            ChangeTheme(endlessCylinderLevel, 1f);
-
-            endlessCylinderLevel++;
-        }
-
-        passedCylinderCount++;
     }
 
     private void ChangeTheme(int index, float duration = 0.0f)
