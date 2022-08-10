@@ -6,7 +6,7 @@ public class CylinderController : TouchMove
     private const float touchMovementSensitivity = 0.35f;
 
 #if UNITY_WEBGL || UNITY_STANDALONE
-    private bool isPressed;
+    private bool isPressed = true;
 #endif
 
     protected override void OnTouchMoved(CallbackContext context)
