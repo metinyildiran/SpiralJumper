@@ -41,7 +41,7 @@ public class ColorManager : MonoBehaviour
         SetMaterialColor("M_Cylinder", ShaderID.BaseColor, ColorLibrary.colors[index].cylinderColor, duration);
         SetMaterialColor("M_Ball", ShaderID.BaseColor, ColorLibrary.colors[index].ballColor, duration);
         SetMaterialColor("M_Splash", ShaderID.BaseColor, ColorLibrary.colors[index].ballColor, duration);
-        SetMaterialColor("M_Special", ShaderID.BaseColor, ColorLibrary.colors[index].ballColor, duration);
+        SetMaterialColor("M_Special", ShaderID.BaseColor, ColorLibrary.colors[index].gradient.colorKeys[0].color, duration);
         SetMaterialColor("M_Particle", ShaderID.BaseColor, ColorLibrary.colors[index].ballColor, duration);
         SetMaterialColor("M_Trail", ShaderID.BaseColor, ColorLibrary.colors[index].ballColor, duration);
     }
