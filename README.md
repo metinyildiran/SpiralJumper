@@ -3,6 +3,8 @@
 The project is made with Unity 2021.3.3f1. 
 
 ## How To Play
+If you want to play right away, I've shared the WebGl link in the about section. If you want to play on your Android Phone I've shared an apk in the Releases section. Or if you are interested in the project and want to improve follow the instructions below.
+
 1. Clone the project.
 2. Open Unity Hub, click the open button and locate the project.
 3. You can use Unity 2021.3.3f1 or newer versions of Unity.
