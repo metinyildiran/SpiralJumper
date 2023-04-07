@@ -14,6 +14,6 @@ If you want to play right away, I've shared the WebGl link in the about section.
 7. Click the play button and start playing!
 
 ## How To Build
-1. Repeat the steps above until 5
+1. Repeat the steps above until 6
 2. Click the build button and select a location.
 3. The apk is ready!
